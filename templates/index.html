@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>BlocklyでGASを組み立てよう</h1>
+<div class="row">
+    <div class="col-md-8">
+
+        <!-- Blocklyを最新にしてくれるやつ -->
+        <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+        <!-- Blocklyのライブラリ -->
+        <script src="/static/js/blockly_compressed.js"></script>
+        <script src="/static/js/blocks_compressed.js"></script>
+        <script src="/static/js/javascript_compressed.js"></script>
+        <script src="/static/js/ja.js"></script>
+        <!-- 自作ブロックの定義 -->
+        <script src="/static/js/myblock.js"></script>
+        <!-- ワークスペースのエリア -->
+        <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
+        <button onclick="doCode()">コードの実行</button>
+        <!-- ツールボックスの定義 -->
+        <xml id="toolbox">
+            <category name="文字列" color="210">
+                <block type="function_name"></block>
+                <block type="get_info"></block>
+                <block type="getrange"></block>
+                <block type="setValue"></block>
+                <block type="program_run"></block>
+                <block type="logic_sample"></block>
+                <block type="logic_sample2"></block>
+            </category>
+            <category name="数値" color="#6B7CD3">
+                <block type="loop_counts"></block>
+            </category>
+            <category name="論理" color="#6B7CD3">
+                <block type="controls_if"></block>
+                <block type="logic_compare"></block>
+            </category>
+            <category name="繰り返し" color="#6B7CD3">
+                <block type="controls_repeat_ext"></block>
+            </category>         
+
+
+
+            <script>
+                //Blocklyをdivにはめ込み
+                var workspace = Blockly.inject('blocklyDiv',
+                    { toolbox: document.getElementById('toolbox') });
+
+                function doCode() {
+                    //ブロックからプログラム（文字列）を作成
+                    var code = Blockly.JavaScript.workspaceToCode(workspace);
+                    //プログラムを実行
+                    try {
+                        eval(code);
+
+                    }
+                    catch (e) {
+                        alert(e);
+                    }
+                }
+            </script>
+
+            <div class="card w-75">
+                <div class="card-body">
+                    <h5 class="card-title">GoogleAppScripts</h5>
+                    <p class="card-text">
+                    <div id="output"></div>
+                    <script src="/static/js/myblock.js"></script>
+                    </p>
+                    <button type="button" class="btn btn-primary">Button</button>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+{% endblock %}
