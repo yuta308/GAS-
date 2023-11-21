@@ -190,6 +190,60 @@ Blockly.defineBlocksWithJsonArray(
     'mutator': 'controls_if_mutator',
     'extensions': ['controls_if_tooltip'],
   },
+  {
+    "type": "get_date",
+    "message0": "時間データを取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "hours",
+    "message0": "時データを取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "min",
+    "message0": "分を取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "day",
+    "message0": "日付データを取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "month",
+    "message0": "月のデータを取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "week",
+    "message0": "週の曜日データを取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
 ]
 );
 
@@ -312,4 +366,56 @@ javascript.javascriptGenerator.forBlock['controls_repeat_ext'] = function (block
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
+
+  javascript.javascriptGenerator.forBlock['get_date'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = '    var date  =  new Date();<br>';
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
+
+  javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = '    var hours = date.getHours();<br>';
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
+  javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = '    var min = date.getMinutes();<br>';
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
+  javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = '    var day = date.getDate();<br>';
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
+  javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = '    var month = date.getMonth() + 1;<br>';
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
+  javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
+    this.setNextStatement(true, null);
+    // TODO: Assemble javascript into code variable.
+    var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>"
+    code +=  "    var week_num =date.getDay()<br>;"
+    code +=  "    var week = daysOfWeek[week_num];<br>";
+    const outputElement = document.getElementById("output");
+    outputElement.innerHTML = code;
+    return code;
+  };
 };
