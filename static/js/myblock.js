@@ -381,7 +381,7 @@ javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
   var code = '    var hours = date.getHours();<br>';
-  const outputElement = document.getElementById("output");
+  const outputElement = document.getElementById("hours");
   outputElement.innerHTML = code;
   return code;
 };
@@ -389,7 +389,7 @@ javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
   var code = '    var min = date.getMinutes();<br>';
-  const outputElement = document.getElementById("output");
+  const outputElement = document.getElementById("min");
   outputElement.innerHTML = code;
   return code;
 };
@@ -397,7 +397,7 @@ javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
   var code = '    var day = date.getDate();<br>';
-  const outputElement = document.getElementById("output");
+  const outputElement = document.getElementById("day");
   outputElement.innerHTML = code;
   return code;
 };
@@ -405,7 +405,7 @@ javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
   var code = '    var month = date.getMonth() + 1;<br>';
-  const outputElement = document.getElementById("output");
+  const outputElement = document.getElementById("month");
   outputElement.innerHTML = code;
   return code;
 };
@@ -415,7 +415,7 @@ javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
   var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>"
   code += "    var week_num =date.getDay()<br>;"
   code += "    var week = daysOfWeek[week_num];<br>";
-  const outputElement = document.getElementById("output");
+  const outputElement = document.getElementById("week");
   outputElement.innerHTML = code;
   return code;
 };
