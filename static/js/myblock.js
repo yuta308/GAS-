@@ -1,21 +1,21 @@
 Blockly.defineBlocksWithJsonArray(
   /* ここにJSONファイルの内容をコピー */
-  [ {
-      "type": "loop_counts",
-      "message0": "%1",
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "loop_counts",
-          "text": "1"
-        }
-      ],
-      "output": "Number",
-      "colour": 120,
-      "tooltip": "",
-      "helpUrl": ""
-    } 
-    ,{
+  [{
+    "type": "loop_counts",
+    "message0": "%1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "loop_counts",
+        "text": "1"
+      }
+    ],
+    "output": "Number",
+    "colour": 120,
+    "tooltip": "",
+    "helpUrl": ""
+  }
+    , {
     'type': 'controls_repeat_ext',
     'message0': '%{BKY_CONTROLS_REPEAT_TITLE}',
     'args0': [{
@@ -34,7 +34,7 @@ Blockly.defineBlocksWithJsonArray(
     'tooltip': '%{BKY_CONTROLS_REPEAT_TOOLTIP}',
     'helpUrl': '%{BKY_CONTROLS_REPEAT_HELPURL}',
   },
-    ,{
+    , {
     "type": "logic_sample2",
     "message0": "文字列 %1",
     "args0": [
@@ -49,7 +49,7 @@ Blockly.defineBlocksWithJsonArray(
     "tooltip": "",
     "helpUrl": ""
   }
-    ,{
+    , {
     "type": "logic_sample",
     "message0": "値を確認 %1",
     "args0": [
@@ -64,7 +64,7 @@ Blockly.defineBlocksWithJsonArray(
     "tooltip": "",
     "helpUrl": ""
   }
-  ,{
+    , {
     'type': 'logic_compare',
     'message0': '%1 %2 %3',
     'args0': [
@@ -95,8 +95,8 @@ Blockly.defineBlocksWithJsonArray(
     'helpUrl': '%{BKY_LOGIC_COMPARE_HELPURL}',
     'extensions': ['logic_compare', 'logic_op_tooltip'],
   },
-    
-    {
+
+  {
     "type": "function_name",
     "message0": "関数名 %1 %2",
     "args0": [
@@ -244,7 +244,7 @@ Blockly.defineBlocksWithJsonArray(
     "tooltip": "",
     "helpUrl": ""
   },
-]
+  ]
 );
 
 
@@ -283,7 +283,7 @@ javascript.javascriptGenerator.forBlock['program_run'] = function (block, genera
   return code;
 };
 
-javascript.javascriptGenerator.forBlock['getrange'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['getrange'] = function (block, generator) {
   var text_getrange = block.getFieldValue('getRange');
   // TODO: Assemble javascript into code variable.
   var code = `sheet = sheet.getRange("${text_getrange}");<br>`;
@@ -295,7 +295,7 @@ javascript.javascriptGenerator.forBlock['getrange'] = function(block, generator)
   return code;
 };
 
-javascript.javascriptGenerator.forBlock['setValue'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['setValue'] = function (block, generator) {
   var text_setValue = block.getFieldValue('setValue');
   // TODO: Assemble javascript into code variable.
   var code = `sheet = sheet.setValue('${text_setValue}');<br>`;
@@ -307,7 +307,7 @@ javascript.javascriptGenerator.forBlock['setValue'] = function(block, generator)
   return code;
 };
 
-Blockly.JavaScript['my_custom_function'] = function(block) {
+Blockly.JavaScript['my_custom_function'] = function (block) {
   var value_if0 = Blockly.JavaScript.valueToCode(block, 'IF0', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do0 = Blockly.JavaScript.statementToCode(block, 'DO0');
 
@@ -319,7 +319,7 @@ Blockly.JavaScript['my_custom_function'] = function(block) {
   return code;
 };
 
-javascript.javascriptGenerator.forBlock['logic_compare'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['logic_compare'] = function (block, generator) {
   var value_eqol_mae = generator.valueToCode(block, 'A', javascript.Order.ATOMIC);
   var dropdown_equl = block.getFieldValue('OP');
   var value_eqol_ato = generator.valueToCode(block, 'B', javascript.Order.ATOMIC);
@@ -329,7 +329,7 @@ javascript.javascriptGenerator.forBlock['logic_compare'] = function(block, gener
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-javascript.javascriptGenerator.forBlock['logic_sample'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['logic_sample'] = function (block, generator) {
   var text_logic_sample = block.getFieldValue('logic_sample');
   // TODO: Assemble javascript into code variable.
   var code = `sheet.getRange('${text_logic_sample}').getValue()`;
@@ -337,7 +337,7 @@ javascript.javascriptGenerator.forBlock['logic_sample'] = function(block, genera
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-javascript.javascriptGenerator.forBlock['logic_sample2'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['logic_sample2'] = function (block, generator) {
   var text_logic_sample2 = block.getFieldValue('logic_sample_Japanese');
   // TODO: Assemble javascript into code variable.
   var code = `"${text_logic_sample2}"`;
@@ -345,7 +345,7 @@ javascript.javascriptGenerator.forBlock['logic_sample2'] = function(block, gener
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-javascript.javascriptGenerator.forBlock['loop_counts'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['loop_counts'] = function (block, generator) {
   var text_loop_counts = block.getFieldValue('loop_counts');
   // TODO: Assemble javascript into code variable.
   var code = `"${text_loop_counts}"`;
@@ -366,56 +366,56 @@ javascript.javascriptGenerator.forBlock['controls_repeat_ext'] = function (block
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
+};
 
-  javascript.javascriptGenerator.forBlock['get_date'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = '    var date  =  new Date();<br>';
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
+javascript.javascriptGenerator.forBlock['get_date'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var date  =  new Date();<br>';
+  const outputElement = document.getElementById("get_date");
+  outputElement.innerHTML = code;
+  return code;
+};
 
-  javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = '    var hours = date.getHours();<br>';
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
-  javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = '    var min = date.getMinutes();<br>';
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
-  javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = '    var day = date.getDate();<br>';
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
-  javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = '    var month = date.getMonth() + 1;<br>';
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
-  javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
-    this.setNextStatement(true, null);
-    // TODO: Assemble javascript into code variable.
-    var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>"
-    code +=  "    var week_num =date.getDay()<br>;"
-    code +=  "    var week = daysOfWeek[week_num];<br>";
-    const outputElement = document.getElementById("output");
-    outputElement.innerHTML = code;
-    return code;
-  };
+javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var hours = date.getHours();<br>';
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
+javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var min = date.getMinutes();<br>';
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
+javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var day = date.getDate();<br>';
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
+javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var month = date.getMonth() + 1;<br>';
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
+javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>"
+  code += "    var week_num =date.getDay()<br>;"
+  code += "    var week = daysOfWeek[week_num];<br>";
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
 };
