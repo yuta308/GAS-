@@ -200,7 +200,7 @@ Blockly.defineBlocksWithJsonArray(
     "helpUrl": ""
   },
   {
-    "type": "hour",
+    "type": "hours",
     "message0": "時データを取得",
     "previousStatement": null,
     "nextStatement": null,
