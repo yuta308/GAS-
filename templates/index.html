@@ -16,11 +16,11 @@
         <!-- 自作ブロックの定義 -->
         <script src="/static/js/myblock.js"></script>
         <!-- ワークスペースのエリア -->
-        <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
+        <div id="blocklyDiv" style="height: 600px; width: 1000px;"></div>
         <button onclick="doCode()">コードの実行</button>
         <!-- ツールボックスの定義 -->
         <xml id="toolbox">
-            <category name="文字列" color="210">
+            <category name="スプレッドシート操作" color="210">
                 <block type="function_name"></block>
                 <block type="get_info"></block>
                 <block type="getrange"></block>
@@ -28,13 +28,17 @@
                 <block type="program_run"></block>
                 <block type="logic_sample"></block>
                 <block type="logic_sample2"></block>
+                <block type="get_last_low"></block>
             </category>
             <category name="数値" color="#6B7CD3">
+                <block type="getrange_int"></block>
                 <block type="loop_counts"></block>
+                <block type="last_low_variable"></block>
             </category>
             <category name="論理" color="#6B7CD3">
                 <block type="controls_if"></block>
                 <block type="logic_compare"></block>
+                <block type="calculate"></block>
             </category>
             <category name="繰り返し" color="#6B7CD3">
                 <block type="controls_repeat_ext"></block>
@@ -46,6 +50,14 @@
                 <block type="day"></block>
                 <block type="month"></block>
                 <block type="week"></block>
+            </category>
+            <category name = "変数">
+                <block type="block_input"></block>
+                <block type="string_variable"></block>
+                <block type="min_variable"></block>
+                <block type="day_variable"></block>
+                <block type="month_variable"></block>
+                <block type="week_variable"></block>
             </category>
 
 

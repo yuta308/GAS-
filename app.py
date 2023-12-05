@@ -5,7 +5,8 @@ import os
 
 #Flaskのインスタンスを生成
 app = Flask(__name__, static_folder='static')
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route("/", methods=["GET", "POST"])
 def index():

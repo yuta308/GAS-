@@ -201,7 +201,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "hours",
-    "message0": "時データを取得",
+    "message0": "時データを取得(hour)",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
@@ -210,7 +210,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "min",
-    "message0": "分情報を取得",
+    "message0": "分情報を取得(minutes)",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
@@ -219,7 +219,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "day",
-    "message0": "日付データを取得",
+    "message0": "日付データを取得(day)",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
@@ -228,7 +228,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "month",
-    "message0": "月のデータを取得",
+    "message0": "月のデータを取得(month)",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
@@ -237,12 +237,187 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "week",
-    "message0": "週の曜日データを取得",
+    "message0": "週の曜日データを取得(week)",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "get_last_low",
+    "message0": "最終行を取得",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "calculate",
+    "message0": "%1 %2 %3 %4",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "value_1",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "cal",
+        "options": [
+          [
+            "+",
+            "+"
+          ],
+          [
+            "-",
+            "-"
+          ],
+          [
+            "*",
+            "*"
+          ],
+          [
+            "/",
+            "/s"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "value_2",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": 120,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "block_input",
+    "message0": "どこのセルに %1 %2 どの値を %3 %4 入力する",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "cell_num",
+        "check": "String"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "cell_contents",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "string_variable",
+    "message0": "文字列 %1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "string_variable",
+        "text": "ここに入力"
+      }
+    ],
+    "inputsInline": true,
+    "output": "String",
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "hour_variable",
+    "message0": "時間(hour)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "min_variable",
+    "message0": "分(min)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "day_variable",
+    "message0": "日付(day)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "month_variable",
+    "message0": "月(month)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "week_variable",
+    "message0": "週(week)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "last_low_variable",
+    "message0": "最終行の列番号",
+    "output": "Number",
+    "colour": 120,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "getrange_int",
+    "message0": "行 %1 %2 列 %3 %4",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "retu_variable",
+        "check": "Number"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "gyou_variable",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "String",
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
+
 ]
 );

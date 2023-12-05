@@ -48,8 +48,6 @@ javascript.javascriptGenerator.forBlock['setValue'] = function (block, generator
   var text_setValue = block.getFieldValue('setValue');
   // TODO: Assemble javascript into code variable.
   var code = `sheet = sheet.setValue('${text_setValue}');<br>`;
-
-
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
 
@@ -97,7 +95,7 @@ javascript.javascriptGenerator.forBlock['logic_sample2'] = function (block, gene
 javascript.javascriptGenerator.forBlock['loop_counts'] = function (block, generator) {
   var text_loop_counts = block.getFieldValue('loop_counts');
   // TODO: Assemble javascript into code variable.
-  var code = `"${text_loop_counts}"`;
+  var code = `${text_loop_counts}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -159,6 +157,15 @@ javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
   outputElement.innerHTML = code;
   return code;
 };
+
+javascript.javascriptGenerator.forBlock['get_last_low'] = function (block, generator) {
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+  var code = '    var lastRow = sheet.getLastRow();';
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
 javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
@@ -168,4 +175,77 @@ javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
+};
+
+javascript.javascriptGenerator.forBlock['block_input'] = function (block, generator) {
+  var cell_numm = generator.valueToCode(block, 'cell_num', javascript.Order.ATOMIC);
+  var cell_contents = generator.valueToCode(block, 'cell_contents', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `var sheet = sheet.getRange(${cell_numm}).setValue(${cell_contents})<br>`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return code
+};
+javascript.javascriptGenerator.forBlock['string_variable'] = function(block, generator) {
+  var text_string_variable = block.getFieldValue('string_variable');
+  // TODO: Assemble javascript into code variable.
+  var code = `${text_string_variable}`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['hour_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'hour';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+javascript.javascriptGenerator.forBlock['min_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'min';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+javascript.javascriptGenerator.forBlock['day_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'day';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+javascript.javascriptGenerator.forBlock['month_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'month';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+javascript.javascriptGenerator.forBlock['week_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'week';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['last_low_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'get_last_low';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['calculate'] = function (block, generator) {
+  var value_1 = generator.valueToCode(block, 'value_1', javascript.Order.ATOMIC);
+  var cal = block.getFieldValue('cal');
+  var value_2 = generator.valueToCode(block, 'value_2', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `${value_1}${cal}${value_2}<br>`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['getrange_int'] = function (block, generator) {
+  var retu_variable = generator.valueToCode(block, 'retu_variable', javascript.Order.ATOMIC);
+  var gyou_variable = generator.valueToCode(block, 'gyou_variable', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `${retu_variable},${gyou_variable}<br>`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
