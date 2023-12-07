@@ -181,14 +181,14 @@ javascript.javascriptGenerator.forBlock['block_input'] = function (block, genera
   var cell_numm = generator.valueToCode(block, 'cell_num', javascript.Order.ATOMIC);
   var cell_contents = generator.valueToCode(block, 'cell_contents', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `var sheet = sheet.getRange(${cell_numm}).setValue(${cell_contents})<br>`;
+  var code = `var sheet = sheet.getRange(${cell_numm}).setValue(${cell_contents});<br>`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code
 };
 javascript.javascriptGenerator.forBlock['string_variable'] = function(block, generator) {
   var text_string_variable = block.getFieldValue('string_variable');
   // TODO: Assemble javascript into code variable.
-  var code = `${text_string_variable}`;
+  var code = `"${text_string_variable}"`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -226,7 +226,7 @@ javascript.javascriptGenerator.forBlock['week_variable'] = function(block, gener
 
 javascript.javascriptGenerator.forBlock['last_low_variable'] = function(block, generator) {
   // TODO: Assemble javascript into code variable.
-  var code = 'get_last_low';
+  var code = 'lastRow';
   // TODO: Change ATOMIC to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -236,7 +236,7 @@ javascript.javascriptGenerator.forBlock['calculate'] = function (block, generato
   var cal = block.getFieldValue('cal');
   var value_2 = generator.valueToCode(block, 'value_2', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `${value_1}${cal}${value_2}<br>`;
+  var code = `${value_1}${cal}${value_2}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -245,7 +245,31 @@ javascript.javascriptGenerator.forBlock['getrange_int'] = function (block, gener
   var retu_variable = generator.valueToCode(block, 'retu_variable', javascript.Order.ATOMIC);
   var gyou_variable = generator.valueToCode(block, 'gyou_variable', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `${retu_variable},${gyou_variable}<br>`;
+  var code = `${retu_variable},${gyou_variable}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['get_value'] = function (block, generator) {
+  var get_value = generator.valueToCode(block, 'get_value', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `var get_value = sheet.getRange(${get_value}).getValue();<br>`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return code
+};
+
+javascript.javascriptGenerator.forBlock['get_value_data'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'get_value';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+javascript.javascriptGenerator.forBlock['send_mail'] = function(block, generator) {
+  var value_mail_sento = generator.valueToCode(block, 'mail_sento', javascript.Order.ATOMIC);
+  var value_mail_title = generator.valueToCode(block, 'mail_title', javascript.Order.ATOMIC);
+  var value_mail_body = generator.valueToCode(block, 'mail_body', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `GmailApp.sendEmail(${value_mail_sento}, ${value_mail_title}, ${value_mail_body});<br> `;
+  return code;
 };

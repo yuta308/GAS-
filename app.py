@@ -15,3 +15,6 @@ def index():
         # Postクラスからの全データをリスト形式で取得するORM
         # 取得したpostsという全データをindex.htmlに渡す
         return render_template("index.html")
+
+
+

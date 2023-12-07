@@ -417,7 +417,64 @@ Blockly.defineBlocksWithJsonArray(
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "get_value",
+    "message0": "対象セル %1 %2 セルの情報を取得する",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "get_value",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "get_value_data",
+    "message0": "取得したセルデータ",
+    "output": null,
+    "colour": 210,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "send_mail",
+    "message0": "送り先 %1 件名 %2 本文 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "mail_sento",
+        "check": [
+          "String",
+          "Array"
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "mail_title",
+        "check": "String"
+      },
+      {
+        "type": "input_value",
+        "name": "mail_body",
+        "check": "String"
+      }
+    ],
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
   }
-
 ]
 );
