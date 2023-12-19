@@ -369,7 +369,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "hour_variable",
-    "message0": "日付(day)",
+    "message0": "時間(hour)",
     "output": null,
     "colour": 230,
     "tooltip": "",
