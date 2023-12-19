@@ -161,7 +161,7 @@ javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
 javascript.javascriptGenerator.forBlock['get_last_low'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var lastRow = sheet.getLastRow();';
+  var code = '    var lastRow = sheet.getLastRow();<br>';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -181,7 +181,7 @@ javascript.javascriptGenerator.forBlock['block_input'] = function (block, genera
   var cell_numm = generator.valueToCode(block, 'cell_num', javascript.Order.ATOMIC);
   var cell_contents = generator.valueToCode(block, 'cell_contents', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `var sheet = sheet.getRange(${cell_numm}).setValue(${cell_contents});<br>`;
+  var code = `sheet.getRange(${cell_numm}).setValue(${cell_contents});<br>`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code
 };
