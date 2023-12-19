@@ -368,6 +368,14 @@ Blockly.defineBlocksWithJsonArray(
     "helpUrl": ""
   },
   {
+    "type": "hour_variable",
+    "message0": "日付(day)",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "month_variable",
     "message0": "月(month)",
     "output": null,

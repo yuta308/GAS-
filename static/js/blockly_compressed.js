@@ -207,7 +207,7 @@
   blockToDom$$module$build$src$core$xml = function (a, b) {
     if (a.isInsertionMarker()) return (b = a.getChildren(!1)[0]) ? blockToDom$$module$build$src$core$xml(b) : new DocumentFragment; const c = $.createElement$$module$build$src$core$utils$xml(a.isShadow() ? "shadow" : "block"); c.setAttribute("type", a.type); b || (c.id = a.id); if (a.mutationToDom) { var d = a.mutationToDom(); d && (d.hasChildNodes() || d.hasAttributes()) && c.appendChild(d) } allFieldsToDom$$module$build$src$core$xml(a, c); if (d = a.getCommentText()) {
       var e = a.getIcon(IconType$$module$build$src$core$icons$icon_types.COMMENT),
-      f = e.getBubbleSize(); e = e.bubbleIsVisible(); var g = $.createElement$$module$build$src$core$utils$xml("comment"); g.appendChild($.createTextNode$$module$build$src$core$utils$xml(d)); g.setAttribute("pinned", `${e}`); g.setAttribute("h", String(f.height)); g.setAttribute("w", String(f.width)); c.appendChild(g)
+        f = e.getBubbleSize(); e = e.bubbleIsVisible(); var g = $.createElement$$module$build$src$core$utils$xml("comment"); g.appendChild($.createTextNode$$module$build$src$core$utils$xml(d)); g.setAttribute("pinned", `${e}`); g.setAttribute("h", String(f.height)); g.setAttribute("w", String(f.width)); c.appendChild(g)
     } a.data && (d = $.createElement$$module$build$src$core$utils$xml("data"), d.appendChild($.createTextNode$$module$build$src$core$utils$xml(a.data)), c.appendChild(d)); for (d = 0; d < a.inputList.length; d++) {
       f = a.inputList[d];
       var h = void 0; e = !0; if (f.type !== $.inputTypes$$module$build$src$core$inputs$input_types.DUMMY) {
@@ -606,7 +606,7 @@
     ContextMenuRegistry$$module$build$src$core$contextmenu_registry.registry.register({
       displayText(a) { var b = a.block; a = b.getDescendants(!1).length; (b = b.getNextBlock()) && (a -= b.getDescendants(!1).length); return 1 === a ? $.Msg$$module$build$src$core$msg.DELETE_BLOCK : $.Msg$$module$build$src$core$msg.DELETE_X_BLOCKS.replace("%1", `${a}`) }, preconditionFn(a) { return !a.block.isInFlyout && a.block.isDeletable() ? "enabled" : "hidden" }, callback(a) {
         a.block &&
-        a.block.checkAndDelete()
+          a.block.checkAndDelete()
       }, scopeType: ContextMenuRegistry$$module$build$src$core$contextmenu_registry.ScopeType.BLOCK, id: "blockDelete", weight: 6
     })
   };
@@ -820,7 +820,7 @@
   }, module$build$src$core$utils$coordinate = {}; module$build$src$core$utils$coordinate.Coordinate = Coordinate$$module$build$src$core$utils$coordinate; var WorkspaceComment$$module$build$src$core$workspace_comment = class {
     constructor(a, b, c, d, e) { this.workspace = a; this.editable = this.movable = this.deletable = !0; this.disposed_ = !1; this.isComment = !0; this.id = e && !a.getCommentById(e) ? e : genUid$$module$build$src$core$utils$idgenerator(); a.addTopComment(this); this.xy_ = new Coordinate$$module$build$src$core$utils$coordinate(0, 0); this.height_ = c; this.width_ = d; this.RTL = a.RTL; this.content_ = b; WorkspaceComment$$module$build$src$core$workspace_comment.fireCreateEvent(this) } dispose() {
       this.disposed_ ||
-      (isEnabled$$module$build$src$core$events$utils() && fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(COMMENT_DELETE$$module$build$src$core$events$utils))(this)), this.workspace.removeTopComment(this), this.disposed_ = !0)
+        (isEnabled$$module$build$src$core$events$utils() && fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(COMMENT_DELETE$$module$build$src$core$events$utils))(this)), this.workspace.removeTopComment(this), this.disposed_ = !0)
     } getHeight() { return this.height_ } setHeight(a) { this.height_ = a } getWidth() { return this.width_ } setWidth(a) { this.width_ = a } getRelativeToSurfaceXY() { return new Coordinate$$module$build$src$core$utils$coordinate(this.xy_.x, this.xy_.y) } moveBy(a, b) {
       const c = new (get$$module$build$src$core$events$utils(COMMENT_MOVE$$module$build$src$core$events$utils))(this);
       this.xy_.translate(a, b); c.recordNew(); fire$$module$build$src$core$events$utils(c)
@@ -925,10 +925,10 @@
           -this.width_ : this.width_, this.height_)), this.onMouseUpWrapper = conditionalBind$$module$build$src$core$browser_events(document, "pointerup", this, this.resizeMouseUp), this.onMouseMoveWrapper = conditionalBind$$module$build$src$core$browser_events(document, "pointermove", this, this.resizeMouseMove), this.workspace.hideChaff()); a.stopPropagation()
       } deleteMouseDown(a) { this.deleteIconBorder && addClass$$module$build$src$core$utils$dom(this.deleteIconBorder, "blocklyDeleteIconHighlighted"); a.stopPropagation() } deleteMouseOut(a) {
         this.deleteIconBorder &&
-        removeClass$$module$build$src$core$utils$dom(this.deleteIconBorder, "blocklyDeleteIconHighlighted")
+          removeClass$$module$build$src$core$utils$dom(this.deleteIconBorder, "blocklyDeleteIconHighlighted")
       } deleteMouseUp(a) { this.dispose(); a.stopPropagation() } unbindDragEvents() { this.onMouseUpWrapper && (unbind$$module$build$src$core$browser_events(this.onMouseUpWrapper), this.onMouseUpWrapper = null); this.onMouseMoveWrapper && (unbind$$module$build$src$core$browser_events(this.onMouseMoveWrapper), this.onMouseMoveWrapper = null) } resizeMouseUp(a) { clearTouchIdentifier$$module$build$src$core$touch(); this.unbindDragEvents() } resizeMouseMove(a) {
         this.autoLayout =
-        !1; a = this.workspace.moveDrag(a); this.setSize(this.RTL ? -a.x : a.x, a.y)
+          !1; a = this.workspace.moveDrag(a); this.setSize(this.RTL ? -a.x : a.x, a.y)
       } resizeComment() {
         const a = this.getHeightWidth(), b = WorkspaceCommentSvg$$module$build$src$core$workspace_comment_svg.TOP_OFFSET, c = 2 * TEXTAREA_OFFSET$$module$build$src$core$workspace_comment_svg; let d; null == (d = this.foreignObject) || d.setAttribute("width", String(a.width)); let e; null == (e = this.foreignObject) || e.setAttribute("height", String(a.height - b)); if (this.RTL) { let f; null == (f = this.foreignObject) || f.setAttribute("x", String(-a.width)) } this.textarea &&
           (this.textarea.style.width = a.width - c + "px", this.textarea.style.height = a.height - c - b + "px")
@@ -955,7 +955,7 @@
   module$build$src$core$xml.workspaceToDom = workspaceToDom$$module$build$src$core$xml; var DeserializationError$$module$build$src$core$serialization$exceptions = class extends Error { }, MissingBlockType$$module$build$src$core$serialization$exceptions = class extends DeserializationError$$module$build$src$core$serialization$exceptions { constructor(a) { super("Expected to find a 'type' property, defining the block type"); this.state = a } }, MissingConnection$$module$build$src$core$serialization$exceptions = class extends DeserializationError$$module$build$src$core$serialization$exceptions {
     constructor(a,
       b, c) {
-        super(`The block ${b.toDevString()} is missing a(n) ${a}
+      super(`The block ${b.toDevString()} is missing a(n) ${a}
 connection`); this.block = b; this.state = c
     }
   }, BadConnectionCheck$$module$build$src$core$serialization$exceptions = class extends DeserializationError$$module$build$src$core$serialization$exceptions {
@@ -1101,13 +1101,13 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       this.value_ = "DEFAULT_VALUE" in new.target.prototype ? new.target.prototype.DEFAULT_VALUE : this.DEFAULT_VALUE; this.size_ = new Size$$module$build$src$core$utils$size(0, 0); a !== Field$$module$build$src$core$field.SKIP_SETUP && (c && this.configure_(c), this.setValue(a), b && this.setValidator(b))
     } configure_(a) { a.tooltip && this.setTooltip(replaceMessageReferences$$module$build$src$core$utils$parsing(a.tooltip)) } setSourceBlock(a) { if (this.sourceBlock_) throw Error("Field already bound to a block"); this.sourceBlock_ = a } getConstants() {
       !this.constants_ &&
-      this.sourceBlock_ && !this.sourceBlock_.isDeadOrDying() && this.sourceBlock_.workspace.rendered && (this.constants_ = this.sourceBlock_.workspace.getRenderer().getConstants()); return this.constants_
+        this.sourceBlock_ && !this.sourceBlock_.isDeadOrDying() && this.sourceBlock_.workspace.rendered && (this.constants_ = this.sourceBlock_.workspace.getRenderer().getConstants()); return this.constants_
     } getSourceBlock() { return this.sourceBlock_ } init() {
       this.fieldGroup_ || (this.fieldGroup_ = createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.G, {}), this.isVisible() || (this.fieldGroup_.style.display = "none"), this.sourceBlock_.getSvgRoot().appendChild(this.fieldGroup_), this.initView(),
         this.updateEditable(), this.setTooltip(this.tooltip_), this.bindEvents_(), this.initModel())
     } initView() { this.createBorderRect_(); this.createTextElement_() } initModel() { } createBorderRect_() { this.borderRect_ = createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.RECT, { rx: this.getConstants().FIELD_BORDER_RECT_RADIUS, ry: this.getConstants().FIELD_BORDER_RECT_RADIUS, x: 0, y: 0, height: this.size_.height, width: this.size_.width, "class": "blocklyFieldRect" }, this.fieldGroup_) } createTextElement_() {
       this.textElement_ =
-      createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.TEXT, { "class": "blocklyText" }, this.fieldGroup_); this.getConstants().FIELD_TEXT_BASELINE_CENTER && this.textElement_.setAttribute("dominant-baseline", "central"); this.textContent_ = document.createTextNode(""); this.textElement_.appendChild(this.textContent_)
+        createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.TEXT, { "class": "blocklyText" }, this.fieldGroup_); this.getConstants().FIELD_TEXT_BASELINE_CENTER && this.textElement_.setAttribute("dominant-baseline", "central"); this.textContent_ = document.createTextNode(""); this.textElement_.appendChild(this.textContent_)
     } bindEvents_() {
       const a = this.getClickTarget_(); if (!a) throw Error("A click target has not been set."); bindMouseEvents$$module$build$src$core$tooltip(a); this.mouseDownWrapper_ =
         conditionalBind$$module$build$src$core$browser_events(a, "pointerdown", this, this.onMouseDown_)
@@ -1177,8 +1177,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
           this, this.handleMouseLeave, !0); this.onKeyDownHandler = conditionalBind$$module$build$src$core$browser_events(b, "keydown", this, this.handleKeyEvent); a.appendChild(b); return b
     } getElement() { return this.element } focus() { const a = this.getElement(); a && (a.focus({ preventScroll: !0 }), addClass$$module$build$src$core$utils$dom(a, "blocklyFocused")) } blur() { const a = this.getElement(); a && (a.blur(), removeClass$$module$build$src$core$utils$dom(a, "blocklyFocused")) } setRole(a) { this.roleName = a } dispose() {
       this.mouseOverHandler &&
-      (unbind$$module$build$src$core$browser_events(this.mouseOverHandler), this.mouseOverHandler = null); this.clickHandler && (unbind$$module$build$src$core$browser_events(this.clickHandler), this.clickHandler = null); this.mouseEnterHandler && (unbind$$module$build$src$core$browser_events(this.mouseEnterHandler), this.mouseEnterHandler = null); this.mouseLeaveHandler && (unbind$$module$build$src$core$browser_events(this.mouseLeaveHandler), this.mouseLeaveHandler = null); this.onKeyDownHandler && (unbind$$module$build$src$core$browser_events(this.onKeyDownHandler),
-        this.onKeyDownHandler = null); for (let a = 0, b; b = this.menuItems[a]; a++)b.dispose(); this.element = null
+        (unbind$$module$build$src$core$browser_events(this.mouseOverHandler), this.mouseOverHandler = null); this.clickHandler && (unbind$$module$build$src$core$browser_events(this.clickHandler), this.clickHandler = null); this.mouseEnterHandler && (unbind$$module$build$src$core$browser_events(this.mouseEnterHandler), this.mouseEnterHandler = null); this.mouseLeaveHandler && (unbind$$module$build$src$core$browser_events(this.mouseLeaveHandler), this.mouseLeaveHandler = null); this.onKeyDownHandler && (unbind$$module$build$src$core$browser_events(this.onKeyDownHandler),
+          this.onKeyDownHandler = null); for (let a = 0, b; b = this.menuItems[a]; a++)b.dispose(); this.element = null
     } getMenuItem(a) { const b = this.getElement(); for (; a && a !== b;) { if (a.classList.contains("blocklyMenuItem")) for (let c = 0, d; d = this.menuItems[c]; c++)if (d.getElement() === a) return d; a = a.parentElement } return null } setHighlighted(a) {
       var b = this.highlightedItem; b && (b.setHighlighted(!1), this.highlightedItem = null); a && (a.setHighlighted(!0), this.highlightedItem = a, b = this.getElement(), scrollIntoContainerView$$module$build$src$core$utils$style(a.getElement(),
         b), setState$$module$build$src$core$utils$aria(b, State$$module$build$src$core$utils$aria.ACTIVEDESCENDANT, a.getId()))
@@ -1201,10 +1201,10 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
           setRole$$module$build$src$core$utils$aria(a, this.roleName); setState$$module$build$src$core$utils$aria(a, State$$module$build$src$core$utils$aria.SELECTED, this.checkable && this.checked || !1); setState$$module$build$src$core$utils$aria(a, State$$module$build$src$core$utils$aria.DISABLED, !this.enabled); return a
     } dispose() { this.element = null } getElement() { return this.element } getId() { return this.element.id } getValue() { let a; return null != (a = this.opt_value) ? a : null } setRightToLeft(a) { this.rightToLeft = a } setRole(a) {
       this.roleName =
-      a
+        a
     } setCheckable(a) { this.checkable = a } setChecked(a) { this.checked = a } setHighlighted(a) { this.highlight = a; const b = this.getElement(); b && this.isEnabled() && (a ? (addClass$$module$build$src$core$utils$dom(b, "blocklyMenuItemHighlight"), addClass$$module$build$src$core$utils$dom(b, "goog-menuitem-highlight")) : (removeClass$$module$build$src$core$utils$dom(b, "blocklyMenuItemHighlight"), removeClass$$module$build$src$core$utils$dom(b, "goog-menuitem-highlight"))) } isEnabled() { return this.enabled } setEnabled(a) {
       this.enabled =
-      a
+        a
     } performAction() { this.isEnabled() && this.actionHandler && this.actionHandler(this) } onAction(a, b) { this.actionHandler = a.bind(b) }
   }, module$build$src$core$menuitem = {}; module$build$src$core$menuitem.MenuItem = MenuItem$$module$build$src$core$menuitem; var FieldDropdown$$module$build$src$core$field_dropdown = class extends Field$$module$build$src$core$field {
     constructor(a, b, c) {
@@ -1289,13 +1289,13 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       this.oldHostMetrics && Scrollbar$$module$build$src$core$scrollbar.metricsAreEquivalent(a, this.oldHostMetrics) || (this.horizontal ? this.resizeHorizontal(a) : this.resizeVertical(a), this.oldHostMetrics = a, this.updateMetrics())
     } requiresViewResize(a) { return this.oldHostMetrics ? this.oldHostMetrics.viewWidth !== a.viewWidth || this.oldHostMetrics.viewHeight !== a.viewHeight || this.oldHostMetrics.absoluteLeft !== a.absoluteLeft || this.oldHostMetrics.absoluteTop !== a.absoluteTop : !0 } resizeHorizontal(a) {
       this.requiresViewResize(a) ?
-      this.resizeViewHorizontal(a) : this.resizeContentHorizontal(a)
+        this.resizeViewHorizontal(a) : this.resizeContentHorizontal(a)
     } resizeViewHorizontal(a) { var b = a.viewWidth - 2 * this.margin; this.pair && (b -= Scrollbar$$module$build$src$core$scrollbar.scrollbarThickness); this.setScrollbarLength(Math.max(0, b)); b = a.absoluteLeft + this.margin; this.pair && this.workspace.RTL && (b += Scrollbar$$module$build$src$core$scrollbar.scrollbarThickness); this.setPosition(b, a.absoluteTop + a.viewHeight - Scrollbar$$module$build$src$core$scrollbar.scrollbarThickness - this.margin); this.resizeContentHorizontal(a) } resizeContentHorizontal(a) {
       if (a.viewWidth >=
         a.scrollWidth) this.setHandleLength(this.scrollbarLength), this.setHandlePosition(0), this.pair || this.setVisible(!1); else { this.pair || this.setVisible(!0); var b = this.scrollbarLength * a.viewWidth / a.scrollWidth; b = this.constrainHandleLength(b); this.setHandleLength(b); b = a.scrollWidth - a.viewWidth; var c = this.scrollbarLength - this.handleLength; a = (a.viewLeft - a.scrollLeft) / b * c; a = this.constrainHandlePosition(a); this.setHandlePosition(a); this.ratio = c / b }
     } resizeVertical(a) {
       this.requiresViewResize(a) ? this.resizeViewVertical(a) :
-      this.resizeContentVertical(a)
+        this.resizeContentVertical(a)
     } resizeViewVertical(a) { let b = a.viewHeight - 2 * this.margin; this.pair && (b -= Scrollbar$$module$build$src$core$scrollbar.scrollbarThickness); this.setScrollbarLength(Math.max(0, b)); this.setPosition(this.workspace.RTL ? a.absoluteLeft + this.margin : a.absoluteLeft + a.viewWidth - Scrollbar$$module$build$src$core$scrollbar.scrollbarThickness - this.margin, a.absoluteTop + this.margin); this.resizeContentVertical(a) } resizeContentVertical(a) {
       if (a.viewHeight >= a.scrollHeight) this.setHandleLength(this.scrollbarLength),
         this.setHandlePosition(0), this.pair || this.setVisible(!1); else { this.pair || this.setVisible(!0); var b = this.scrollbarLength * a.viewHeight / a.scrollHeight; b = this.constrainHandleLength(b); this.setHandleLength(b); b = a.scrollHeight - a.viewHeight; var c = this.scrollbarLength - this.handleLength; a = (a.viewTop - a.scrollTop) / b * c; a = this.constrainHandlePosition(a); this.setHandlePosition(a); this.ratio = c / b }
@@ -1325,7 +1325,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
           {}, this.svgRoot); conditionalBind$$module$build$src$core$browser_events(this.background, "pointerdown", this, this.onMouseDown)
     } dispose() { removeNode$$module$build$src$core$utils$dom(this.svgRoot); this.disposed = !0 } setAnchorLocation(a, b = !1) { this.anchor = a; b ? this.positionByRect(this.ownerRect) : this.positionRelativeToAnchor(); this.renderTail() } setPositionRelativeToAnchor(a, b) { this.relativeLeft = a; this.relativeTop = b; this.positionRelativeToAnchor(); this.renderTail() } getSize() { return this.size } setSize(a, b = !1) {
       a.width =
-      Math.max(a.width, Bubble$$module$build$src$core$bubbles$bubble.MIN_SIZE); a.height = Math.max(a.height, Bubble$$module$build$src$core$bubbles$bubble.MIN_SIZE); this.size = a; this.background.setAttribute("width", `${a.width}`); this.background.setAttribute("height", `${a.height}`); b ? this.positionByRect(this.ownerRect) : this.positionRelativeToAnchor(); this.renderTail()
+        Math.max(a.width, Bubble$$module$build$src$core$bubbles$bubble.MIN_SIZE); a.height = Math.max(a.height, Bubble$$module$build$src$core$bubbles$bubble.MIN_SIZE); this.size = a; this.background.setAttribute("width", `${a.width}`); this.background.setAttribute("height", `${a.height}`); b ? this.positionByRect(this.ownerRect) : this.positionRelativeToAnchor(); this.renderTail()
     } getColour() { return this.colour } setColour(a) { this.colour = a; this.tail.setAttribute("fill", a); this.background.setAttribute("fill", a) } onMouseDown(a) {
       let b;
       null == (b = this.workspace.getGesture(a)) || b.handleBubbleStart(a, this)
@@ -1354,7 +1354,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   Bubble$$module$build$src$core$bubbles$bubble.MIN_SIZE = _a$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER; Bubble$$module$build$src$core$bubbles$bubble.TAIL_THICKNESS = 1; Bubble$$module$build$src$core$bubbles$bubble.TAIL_ANGLE = 20; Bubble$$module$build$src$core$bubbles$bubble.TAIL_BEND = 4; Bubble$$module$build$src$core$bubbles$bubble.ANCHOR_RADIUS = 8; var module$build$src$core$bubbles$bubble = {}; module$build$src$core$bubbles$bubble.Bubble = Bubble$$module$build$src$core$bubbles$bubble; var module$build$src$core$utils$object = {}; module$build$src$core$utils$object.deepMerge = deepMerge$$module$build$src$core$utils$object; var Theme$$module$build$src$core$theme = class {
     constructor(a, b, c, d) { this.name = a; this.startHats = !1; this.blockStyles = b || Object.create(null); this.categoryStyles = c || Object.create(null); this.componentStyles = d || Object.create(null); this.fontStyle = Object.create(null); register$$module$build$src$core$registry(Type$$module$build$src$core$registry.THEME, a, this, !0) } getClassName() { return this.name + "-theme" } setBlockStyle(a, b) { this.blockStyles[a] = b } setCategoryStyle(a, b) { this.categoryStyles[a] = b } getComponentStyle(a) {
       a =
-      this.componentStyles[a]; if (!a) return null; if ("string" === typeof a) { const b = this.getComponentStyle(a); if (b) return b } return `${a}`
+        this.componentStyles[a]; if (!a) return null; if ("string" === typeof a) { const b = this.getComponentStyle(a); if (b) return b } return `${a}`
     } setComponentStyle(a, b) { this.componentStyles[a] = b } setFontStyle(a) { this.fontStyle = a } setStartHats(a) { this.startHats = a } static defineTheme(a, b) {
       a = a.toLowerCase(); const c = new Theme$$module$build$src$core$theme(a); let d = b.base; if (d) {
         if ("string" === typeof d) { let e; d = null != (e = getObject$$module$build$src$core$registry(Type$$module$build$src$core$registry.THEME, d)) ? e : void 0 } d instanceof
@@ -1423,8 +1423,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
     } updateCollapsed() { super.updateCollapsed(); this.sourceBlock.isCollapsed() && this.setBubbleVisible(!1) } onLocationChange(a) { super.onLocationChange(a); let b; null == (b = this.miniWorkspaceBubble) || b.setAnchorLocation(this.getAnchorLocation()) } onClick() { super.onClick(); this.setBubbleVisible(!this.bubbleIsVisible()) } bubbleIsVisible() { return !!this.miniWorkspaceBubble } setBubbleVisible(a) {
       if (this.bubbleIsVisible() !==
         a) {
-          if (a) { this.miniWorkspaceBubble = new MiniWorkspaceBubble$$module$build$src$core$bubbles$mini_workspace_bubble(this.getMiniWorkspaceConfig(), this.sourceBlock.workspace, this.getAnchorLocation(), this.getBubbleOwnerRect()); this.applyColour(); this.createRootBlock(); this.addSaveConnectionsListener(); let b; null == (b = this.miniWorkspaceBubble) || b.addWorkspaceChangeListener(this.createMiniWorkspaceChangeListener()) } else { let b; null == (b = this.miniWorkspaceBubble) || b.dispose(); this.miniWorkspaceBubble = null } fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(BUBBLE_OPEN$$module$build$src$core$events$utils))(this.sourceBlock,
-            a, "mutator"))
+        if (a) { this.miniWorkspaceBubble = new MiniWorkspaceBubble$$module$build$src$core$bubbles$mini_workspace_bubble(this.getMiniWorkspaceConfig(), this.sourceBlock.workspace, this.getAnchorLocation(), this.getBubbleOwnerRect()); this.applyColour(); this.createRootBlock(); this.addSaveConnectionsListener(); let b; null == (b = this.miniWorkspaceBubble) || b.addWorkspaceChangeListener(this.createMiniWorkspaceChangeListener()) } else { let b; null == (b = this.miniWorkspaceBubble) || b.dispose(); this.miniWorkspaceBubble = null } fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(BUBBLE_OPEN$$module$build$src$core$events$utils))(this.sourceBlock,
+          a, "mutator"))
       }
     } getMiniWorkspaceConfig() { let a; const b = { disable: !1, media: this.sourceBlock.workspace.options.pathToMedia, rtl: this.sourceBlock.RTL, renderer: this.sourceBlock.workspace.options.renderer, rendererOverrides: null != (a = this.sourceBlock.workspace.options.rendererOverrides) ? a : void 0 }; this.flyoutBlockTypes.length && (b.toolbox = { kind: "flyoutToolbox", contents: this.flyoutBlockTypes.map(c => ({ kind: "block", type: c })) }); return b } getAnchorLocation() {
       const a = SIZE$$module$build$src$core$icons$mutator_icon / 2;
@@ -1436,7 +1436,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       if (this.sourceBlock.saveConnections && this.rootBlock) {
         var a = () => {
           this.sourceBlock.saveConnections && this.rootBlock &&
-          this.sourceBlock.saveConnections(this.rootBlock)
+            this.sourceBlock.saveConnections(this.rootBlock)
         }; a(); this.sourceBlock.workspace.addChangeListener(a)
       }
     } createMiniWorkspaceChangeListener() { return a => { $.MutatorIcon$$module$build$src$core$icons$mutator_icon.isIgnorableMutatorEvent(a) || this.updateWorkspacePid || (this.updateWorkspacePid = setTimeout(() => { this.updateWorkspacePid = null; this.recomposeSourceBlock() }, 0)) } } static isIgnorableMutatorEvent(a) {
@@ -1467,7 +1467,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   module$build$src$core$utils.toolbox = module$build$src$core$utils$toolbox; module$build$src$core$utils.userAgent = module$build$src$core$utils$useragent; module$build$src$core$utils.xml = module$build$src$core$utils$xml; var module$build$src$core$icons$registry = {}; module$build$src$core$icons$registry.register = register$$module$build$src$core$icons$registry; module$build$src$core$icons$registry.unregister = unregister$$module$build$src$core$icons$registry; var TextBubble$$module$build$src$core$bubbles$text_bubble = class extends Bubble$$module$build$src$core$bubbles$bubble {
     constructor(a, b, c, d) { super(b, c, d); this.text = a; this.workspace = b; this.anchor = c; this.ownerRect = d; this.paragraph = this.stringToSvg(a, this.contentContainer); this.updateBubbleSize() } getText() { return this.text } setText(a) { this.text = a; removeNode$$module$build$src$core$utils$dom(this.paragraph); this.paragraph = this.stringToSvg(a, this.contentContainer); this.updateBubbleSize() } stringToSvg(a, b) {
       b =
-      this.createParagraph(b); a = this.createSpans(b, a); this.workspace.RTL && this.rightAlignSpans(b.getBBox().width, a); return b
+        this.createParagraph(b); a = this.createSpans(b, a); this.workspace.RTL && this.rightAlignSpans(b.getBBox().width, a); return b
     } createParagraph(a) { return createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.TEXT, { "class": "blocklyText blocklyBubbleText blocklyNoPointerEvents", y: Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH }, a) } createSpans(a, b) {
       return b.split("\n").map(c => {
         const d = createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.TSPAN,
@@ -1483,14 +1483,14 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       this.MIN_SIZE = new Size$$module$build$src$core$utils$size(45 + Bubble$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER, 20 + Bubble$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER); ({ inputRoot: this.inputRoot, textArea: this.textArea } = this.createEditor(this.contentContainer)); this.resizeGroup = this.createResizeHandle(this.svgRoot); this.setSize(this.DEFAULT_SIZE, !0)
     } getText() { return this.text } setText(a) { this.text = a; this.textArea.value = a; this.onTextChange() } addTextChangeListener(a) { this.textChangeListeners.push(a) } addSizeChangeListener(a) { this.sizeChangeListeners.push(a) } createEditor(a) {
       a =
-      createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.FOREIGNOBJECT, { x: Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH, y: Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH }, a); const b = document.createElementNS(HTML_NS$$module$build$src$core$utils$dom, "body"); b.setAttribute("xmlns", HTML_NS$$module$build$src$core$utils$dom); b.className = "blocklyMinimalBody"; const c = document.createElementNS(HTML_NS$$module$build$src$core$utils$dom, "textarea"); c.className =
-        "blocklyCommentTextarea"; c.setAttribute("dir", this.workspace.RTL ? "RTL" : "LTR"); b.appendChild(c); a.appendChild(b); this.bindTextAreaEvents(c); setTimeout(() => { c.focus() }, 0); return { inputRoot: a, textArea: c }
+        createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.FOREIGNOBJECT, { x: Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH, y: Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH }, a); const b = document.createElementNS(HTML_NS$$module$build$src$core$utils$dom, "body"); b.setAttribute("xmlns", HTML_NS$$module$build$src$core$utils$dom); b.className = "blocklyMinimalBody"; const c = document.createElementNS(HTML_NS$$module$build$src$core$utils$dom, "textarea"); c.className =
+          "blocklyCommentTextarea"; c.setAttribute("dir", this.workspace.RTL ? "RTL" : "LTR"); b.appendChild(c); a.appendChild(b); this.bindTextAreaEvents(c); setTimeout(() => { c.focus() }, 0); return { inputRoot: a, textArea: c }
     } bindTextAreaEvents(a) { conditionalBind$$module$build$src$core$browser_events(a, "wheel", this, b => { b.stopPropagation() }); conditionalBind$$module$build$src$core$browser_events(a, "focus", this, this.onStartEdit, !0); conditionalBind$$module$build$src$core$browser_events(a, "change", this, this.onTextChange) } createResizeHandle(a) {
       a =
-      createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.G, { "class": this.workspace.RTL ? "blocklyResizeSW" : "blocklyResizeSE" }, a); const b = 2 * Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH; createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.POLYGON, { points: `0,${b} ${b},${b} ${b},0` }, a); createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.LINE, {
-        "class": "blocklyResizeLine", x1: b / 3, y1: b - 1, x2: b - 1, y2: b /
-          3
-      }, a); createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.LINE, { "class": "blocklyResizeLine", x1: 2 * b / 3, y1: b - 1, x2: b - 1, y2: 2 * b / 3 }, a); conditionalBind$$module$build$src$core$browser_events(a, "pointerdown", this, this.onResizePointerDown); return a
+        createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.G, { "class": this.workspace.RTL ? "blocklyResizeSW" : "blocklyResizeSE" }, a); const b = 2 * Bubble$$module$build$src$core$bubbles$bubble.BORDER_WIDTH; createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.POLYGON, { points: `0,${b} ${b},${b} ${b},0` }, a); createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.LINE, {
+          "class": "blocklyResizeLine", x1: b / 3, y1: b - 1, x2: b - 1, y2: b /
+            3
+        }, a); createSvgElement$$module$build$src$core$utils$dom(Svg$$module$build$src$core$utils$svg.LINE, { "class": "blocklyResizeLine", x1: 2 * b / 3, y1: b - 1, x2: b - 1, y2: 2 * b / 3 }, a); conditionalBind$$module$build$src$core$browser_events(a, "pointerdown", this, this.onResizePointerDown); return a
     } setSize(a, b = !1) {
       a.width = Math.max(a.width, this.MIN_SIZE.width); a.height = Math.max(a.height, this.MIN_SIZE.height); const c = a.width - Bubble$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER, d = a.height - Bubble$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER;
       this.inputRoot.setAttribute("width", `${c}`); this.inputRoot.setAttribute("height", `${d}`); this.textArea.style.width = `${c - 4}px`; this.textArea.style.height = `${d - 4}px`; this.workspace.RTL ? this.resizeGroup.setAttribute("transform", `translate(${Bubble$$module$build$src$core$bubbles$bubble.DOUBLE_BORDER}, ${d}) scale(-1 1)`) : this.resizeGroup.setAttribute("transform", `translate(${c}, ${d})`); super.setSize(a, b); this.onSizeChange()
@@ -1524,7 +1524,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         !this.textBubble && !this.textInputBubble) if (a || this.textBubble || this.textInputBubble) this.bubbleVisiblity = a, this.sourceBlock.rendered && !this.sourceBlock.isInFlyout && (a ? (this.sourceBlock.isEditable() ? this.showEditableBubble() : this.showNonEditableBubble(), this.applyColour()) : this.hideBubble(), fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(BUBBLE_OPEN$$module$build$src$core$events$utils))(this.sourceBlock, a, "comment")))
     } showEditableBubble() {
       this.textInputBubble =
-      new TextInputBubble$$module$build$src$core$bubbles$textinput_bubble(this.sourceBlock.workspace, this.getAnchorLocation(), this.getBubbleOwnerRect()); this.textInputBubble.setText(this.getText()); this.textInputBubble.setSize(this.bubbleSize, !0); this.textInputBubble.addTextChangeListener(() => this.onTextChange()); this.textInputBubble.addSizeChangeListener(() => this.onSizeChange())
+        new TextInputBubble$$module$build$src$core$bubbles$textinput_bubble(this.sourceBlock.workspace, this.getAnchorLocation(), this.getBubbleOwnerRect()); this.textInputBubble.setText(this.getText()); this.textInputBubble.setSize(this.bubbleSize, !0); this.textInputBubble.addTextChangeListener(() => this.onTextChange()); this.textInputBubble.addSizeChangeListener(() => this.onSizeChange())
     } showNonEditableBubble() {
       this.textBubble = new TextBubble$$module$build$src$core$bubbles$text_bubble(this.getText(), this.sourceBlock.workspace,
         this.getAnchorLocation(), this.getBubbleOwnerRect())
@@ -1608,7 +1608,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       a = a.getConnections_(!0); if (c.length !== a.length) throw Error("Connection lists did not match in length."); for (let d = 0; d < a.length; d++)if (a[d] === b) return c[d]; return null
     } setHelpUrl(a) { this.helpUrl = a } setTooltip(a) { this.tooltip = a } getTooltip() { return getTooltipOfObject$$module$build$src$core$tooltip(this) } getColour() { return this.colour_ } getStyleName() { return this.styleName_ } getHue() { return this.hue_ } setColour(a) { a = parseBlockColour$$module$build$src$core$utils$parsing(a); this.hue_ = a.hue; this.colour_ = a.hex } setStyle(a) {
       this.styleName_ =
-      a
+        a
     } setOnChange(a) { if (a && "function" !== typeof a) throw Error("onchange must be a function."); this.onchangeWrapper_ && this.workspace.removeChangeListener(this.onchangeWrapper_); this.onchange = a; this.onchangeWrapper_ = a.bind(this); this.workspace.addChangeListener(this.onchangeWrapper_) } getField(a) {
       if ("string" !== typeof a) throw TypeError("Block.prototype.getField expects a string with the field name but received " + (void 0 === a ? "nothing" : a + " of type " + typeof a) + " instead"); for (let b = 0, c; c = this.inputList[b]; b++)for (let d =
         0, e; e = c.fieldRow[d]; d++)if (e.name === a) return e; return null
@@ -1625,7 +1625,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       }
     } setOutput(a, b) { if (a) void 0 === b && (b = null), this.outputConnection || (this.outputConnection = this.makeConnection_(ConnectionType$$module$build$src$core$connection_type.OUTPUT_VALUE)), this.outputConnection.setCheck(b); else if (this.outputConnection) { if (this.outputConnection.isConnected()) throw Error("Must disconnect output value before removing connection."); this.outputConnection.dispose(); this.outputConnection = null } } setInputsInline(a) {
       this.inputsInline !==
-      a && (fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils($.CHANGE$$module$build$src$core$events$utils))(this, "inline", null, this.inputsInline, a)), this.inputsInline = a)
+        a && (fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils($.CHANGE$$module$build$src$core$events$utils))(this, "inline", null, this.inputsInline, a)), this.inputsInline = a)
     } getInputsInline() {
       if (void 0 !== this.inputsInline) return this.inputsInline; for (var a = 1; a < this.inputList.length; a++)if (this.inputList[a - 1] instanceof DummyInput$$module$build$src$core$inputs$dummy_input && this.inputList[a] instanceof DummyInput$$module$build$src$core$inputs$dummy_input) return !1; for (a = 1; a < this.inputList.length; a++)if (this.inputList[a -
         1] instanceof $.ValueInput$$module$build$src$core$inputs$value_input && this.inputList[a] instanceof DummyInput$$module$build$src$core$inputs$dummy_input) return !0; return !1
@@ -1833,7 +1833,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.location.getParentInput(); const b = a.getSourceBlock(); a = b.inputList.indexOf(a); for (a += 1; a < b.inputList.length; a++) { const c = b.inputList[a], d = c.fieldRow; for (let e = 0; e < d.length; e++) { const f = d[e]; if (f.isClickable() || ASTNode$$module$build$src$core$keyboard_nav$ast_node.NAVIGATE_ALL_FIELDS) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createFieldNode(f) } if (c.connection) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createInputNode(c) } return null
     } findNextForField() {
       var a = this.location,
-      b = a.getParentInput(); const c = a.getSourceBlock(); if (!c) throw Error("The current AST location is not associated with a block"); var d = c.inputList.indexOf(b); for (a = b.fieldRow.indexOf(a) + 1; d < c.inputList.length; d++) { b = c.inputList[d]; const e = b.fieldRow; for (; a < e.length;) { if (e[a].isClickable() || ASTNode$$module$build$src$core$keyboard_nav$ast_node.NAVIGATE_ALL_FIELDS) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createFieldNode(e[a]); a++ } a = 0; if (b.connection) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createInputNode(b) } return null
+        b = a.getParentInput(); const c = a.getSourceBlock(); if (!c) throw Error("The current AST location is not associated with a block"); var d = c.inputList.indexOf(b); for (a = b.fieldRow.indexOf(a) + 1; d < c.inputList.length; d++) { b = c.inputList[d]; const e = b.fieldRow; for (; a < e.length;) { if (e[a].isClickable() || ASTNode$$module$build$src$core$keyboard_nav$ast_node.NAVIGATE_ALL_FIELDS) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createFieldNode(e[a]); a++ } a = 0; if (b.connection) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createInputNode(b) } return null
     } findPrevForInput() {
       const a =
         this.location.getParentInput(), b = a.getSourceBlock(); for (var c = b.inputList.indexOf(a); 0 <= c; c--) { var d = b.inputList[c]; if (d.connection && d !== a) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createInputNode(d); d = d.fieldRow; for (let e = d.length - 1; 0 <= e; e--) { const f = d[e]; if (f.isClickable() || ASTNode$$module$build$src$core$keyboard_nav$ast_node.NAVIGATE_ALL_FIELDS) return ASTNode$$module$build$src$core$keyboard_nav$ast_node.createFieldNode(f) } } return null
@@ -1936,8 +1936,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       }
     } unhighlight() { this.highlightPath && (removeNode$$module$build$src$core$utils$dom(this.highlightPath), this.highlightPath = null) } setTracking(a) {
       a &&
-      this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED || !a && this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.UNTRACKED || this.sourceBlock_.isInFlyout || (a ? (this.db.addConnection(this, this.y), this.trackedState = RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED) : (this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED && this.db.removeConnection(this,
-        this.y), this.trackedState = RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.UNTRACKED))
+        this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED || !a && this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.UNTRACKED || this.sourceBlock_.isInFlyout || (a ? (this.db.addConnection(this, this.y), this.trackedState = RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED) : (this.trackedState === RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.TRACKED && this.db.removeConnection(this,
+          this.y), this.trackedState = RenderedConnection$$module$build$src$core$rendered_connection.TrackedState.UNTRACKED))
     } stopTrackingAll() { this.setTracking(!1); if (this.targetConnection) { const a = this.targetBlock().getDescendants(!1); for (let b = 0; b < a.length; b++) { const c = a[b], d = c.getConnections_(!0); for (let e = 0; e < d.length; e++)d[e].setTracking(!1); for (const e of c.getIcons()) hasBubble$$module$build$src$core$interfaces$i_has_bubble(e) && e.setBubbleVisible(!1) } } } startTrackingAll() {
       this.setTracking(!0); let a = []; if (this.type !==
         ConnectionType$$module$build$src$core$connection_type.INPUT_VALUE && this.type !== ConnectionType$$module$build$src$core$connection_type.NEXT_STATEMENT) return a; const b = this.targetBlock(); if (b) { let c; b.isCollapsed() ? (c = [], b.outputConnection && c.push(b.outputConnection), b.nextConnection && c.push(b.nextConnection), b.previousConnection && c.push(b.previousConnection)) : c = b.getConnections_(!0); for (let d = 0; d < c.length; d++)a.push(...c[d].startTrackingAll()); a.length || (a = [b]) } return a
@@ -2000,12 +2000,12 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       if (!(this.isDeadOrDying() || this.workspace.isDragging() || this.getParent() || this.isInFlyout)) {
         var a = this.workspace.getGrid(); if (a && a.shouldSnap()) {
           var b = a.getSpacing(),
-          c = b / 2, d = this.getRelativeToSurfaceXY(); a = Math.round(Math.round((d.x - c) / b) * b + c - d.x); b = Math.round(Math.round((d.y - c) / b) * b + c - d.y); (a || b) && this.moveBy(a, b, ["snap"])
+            c = b / 2, d = this.getRelativeToSurfaceXY(); a = Math.round(Math.round((d.x - c) / b) * b + c - d.x); b = Math.round(Math.round((d.y - c) / b) * b + c - d.y); (a || b) && this.moveBy(a, b, ["snap"])
         }
       }
     } getBoundingRectangle() { const a = this.getRelativeToSurfaceXY(), b = this.getHeightWidth(); let c, d; this.RTL ? (c = a.x - b.width, d = a.x) : (c = a.x, d = a.x + b.width); return new Rect$$module$build$src$core$utils$rect(a.y, a.y + b.height, c, d) } markDirty() { this.pathObject.constants = this.workspace.getRenderer().getConstants(); for (let a = 0, b; b = this.inputList[a]; a++)b.markDirty() } setCollapsed(a) {
       this.collapsed_ !==
-      a && (super.setCollapsed(a), this.updateCollapsed_())
+        a && (super.setCollapsed(a), this.updateCollapsed_())
     } updateCollapsed_() {
       var a = this.isCollapsed(); const b = COLLAPSED_INPUT_NAME$$module$build$src$core$constants, c = COLLAPSED_FIELD_NAME$$module$build$src$core$constants; for (let e = 0, f; f = this.inputList[e]; e++)f.name !== b && f.setVisible(!a); for (var d of this.getIcons()) d.updateCollapsed(); a ? (a = this.toString(COLLAPSE_CHARS$$module$build$src$core$internal_constants), (d = this.getField(c)) ? d.setValue(a) : (this.getInput(b) || this.appendDummyInput(b)).appendField(new FieldLabel$$module$build$src$core$field_label(a),
         c)) : (this.updateDisabled(), this.removeInput(b))
@@ -2020,10 +2020,10 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         "blocklyDragging")) : (draggingConnections$$module$build$src$core$common.length = 0, removeClass$$module$build$src$core$utils$dom(this.svgGroup_, "blocklyDragging")); for (let b = 0; b < this.childBlocks_.length; b++)this.childBlocks_[b].setDragging(a)
     } setMovable(a) { super.setMovable(a); this.pathObject.updateMovable(a) } setEditable(a) { super.setEditable(a); a = this.getIcons(); for (let b = 0; b < a.length; b++)a[b].updateEditable() } setShadow(a) { super.setShadow(a); this.applyColour() } setInsertionMarker(a) {
       this.isInsertionMarker_ !==
-      a && (this.isInsertionMarker_ = a) && (this.setColour(this.workspace.getRenderer().getConstants().INSERTION_MARKER_COLOUR), this.pathObject.updateInsertionMarker(!0))
+        a && (this.isInsertionMarker_ = a) && (this.setColour(this.workspace.getRenderer().getConstants().INSERTION_MARKER_COLOUR), this.pathObject.updateInsertionMarker(!0))
     } getSvgRoot() { return this.svgGroup_ } dispose(a, b) { this.isDeadOrDying() || (dispose$$module$build$src$core$tooltip(), hide$$module$build$src$core$contextmenu(), b && this.rendered && (this.unplug(a), disposeUiEffect$$module$build$src$core$block_animations(this)), super.dispose(!!a), removeNode$$module$build$src$core$utils$dom(this.svgGroup_)) } disposeInternal() {
       this.isDeadOrDying() ||
-      (super.disposeInternal(), this.rendered = !1, getSelected$$module$build$src$core$common() === this && (this.unselect(), this.workspace.cancelCurrentGesture()), [...this.warningTextDb.values()].forEach(a => clearTimeout(a)), this.warningTextDb.clear(), this.getIcons().forEach(a => a.dispose()))
+        (super.disposeInternal(), this.rendered = !1, getSelected$$module$build$src$core$common() === this && (this.unselect(), this.workspace.cancelCurrentGesture()), [...this.warningTextDb.values()].forEach(a => clearTimeout(a)), this.warningTextDb.clear(), this.getIcons().forEach(a => a.dispose()))
     } checkAndDelete() { this.workspace.isFlyout || ($.setGroup$$module$build$src$core$events$utils(!0), this.workspace.hideChaff(), this.outputConnection ? this.dispose(!1, !0) : this.dispose(!0, !0), $.setGroup$$module$build$src$core$events$utils(!1)) } toCopyData() {
       return this.isInsertionMarker_ ?
         null : { saveInfo: save$$module$build$src$core$serialization$blocks(this, { addCoordinates: !0, addNextBlocks: !1 }), source: this.workspace, typeCounts: getBlockTypeCounts$$module$build$src$core$common(this, !0) }
@@ -2075,7 +2075,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       }
     } scheduleSnapAndBump() { const a = $.getGroup$$module$build$src$core$events$utils(); setTimeout(() => { $.setGroup$$module$build$src$core$events$utils(a); this.snapToGrid(); $.setGroup$$module$build$src$core$events$utils(!1) }, $.config$$module$build$src$core$config.bumpDelay / 2); this.bumpNeighbours() } positionNearConnection(a, b) {
       a.type !== ConnectionType$$module$build$src$core$connection_type.NEXT_STATEMENT && a.type !== ConnectionType$$module$build$src$core$connection_type.INPUT_VALUE ||
-      this.moveBy(b.x - a.x, b.y - a.y)
+        this.moveBy(b.x - a.x, b.y - a.y)
     } getFirstStatementConnection() { return super.getFirstStatementConnection() } getChildren(a) { return super.getChildren(a) } queueRender() { return queueRender$$module$build$src$core$render_management(this) } render(a) {
       if (!this.renderIsInProgress_) {
         this.renderIsInProgress_ = !0; try {
@@ -2478,7 +2478,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       }
     } drawRightSideRow_(a) {
       this.outlinePath_ +=
-      lineOnAxis$$module$build$src$core$utils$svg_paths("V", a.yPos + a.height)
+        lineOnAxis$$module$build$src$core$utils$svg_paths("V", a.yPos + a.height)
     } drawBottom_() {
       const a = this.info_.bottomRow, b = a.elements; this.positionNextConnection_(); let c = 0, d = ""; for (let e = b.length - 1, f; f = b[e]; e--)Types$$module$build$src$core$renderers$measurables$types.isNextConnection(f) && f instanceof Connection$$module$build$src$core$renderers$measurables$connection ? d += f.shape.pathRight : Types$$module$build$src$core$renderers$measurables$types.isLeftSquareCorner(f) ? d += lineOnAxis$$module$build$src$core$utils$svg_paths("H",
         a.xPos) : Types$$module$build$src$core$renderers$measurables$types.isLeftRoundedCorner(f) ? d += this.constants_.OUTSIDE_CORNERS.bottomLeft : Types$$module$build$src$core$renderers$measurables$types.isRightRoundedCorner(f) ? (d += this.constants_.OUTSIDE_CORNERS.bottomRight, c = this.constants_.OUTSIDE_CORNERS.rightHeight) : Types$$module$build$src$core$renderers$measurables$types.isSpacer(f) && (d += lineOnAxis$$module$build$src$core$utils$svg_paths("h", -1 * f.width)); this.outlinePath_ += lineOnAxis$$module$build$src$core$utils$svg_paths("V",
@@ -2504,7 +2504,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   }, module$build$src$core$renderers$common$drawer = {}; module$build$src$core$renderers$common$drawer.Drawer = Drawer$$module$build$src$core$renderers$common$drawer; var Drawer$$module$build$src$core$renderers$zelos$drawer = class extends Drawer$$module$build$src$core$renderers$common$drawer {
     constructor(a, b) { super(a, b) } draw() { const a = this.block_.pathObject; a.beginDrawing(); this.drawOutline_(); this.drawInternals_(); a.setPath(this.outlinePath_ + "\n" + this.inlinePath_); this.info_.RTL && a.flipRTL(); this.recordSizeOnBlock_(); this.info_.outputConnection && (a.outputShapeType = this.info_.outputConnection.shape.type); a.endDrawing() } drawOutline_() {
       this.info_.outputConnection &&
-      this.info_.outputConnection.isDynamicShape && !this.info_.hasStatementInput && !this.info_.bottomRow.hasNextConnection ? (this.drawFlatTop_(), this.drawRightDynamicConnection_(), this.drawFlatBottom_(), this.drawLeftDynamicConnection_()) : super.drawOutline_()
+        this.info_.outputConnection.isDynamicShape && !this.info_.hasStatementInput && !this.info_.bottomRow.hasNextConnection ? (this.drawFlatTop_(), this.drawRightDynamicConnection_(), this.drawFlatBottom_(), this.drawLeftDynamicConnection_()) : super.drawOutline_()
     } drawLeft_() { this.info_.outputConnection && this.info_.outputConnection.isDynamicShape ? this.drawLeftDynamicConnection_() : super.drawLeft_() } drawRightSideRow_(a) {
       if (!(0 >= a.height)) {
         if (Types$$module$build$src$core$renderers$measurables$types.isSpacer(a)) {
@@ -2551,7 +2551,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.sourceBlock_.getSvgRoot() : this.createBorderRect_(); this.createTextElement_()
     } doValueInvalid_(a) { this.isBeingEdited_ && (this.isDirty_ = !0, this.isTextValid_ = !1, a = this.value_, this.value_ = this.htmlInput_.getAttribute("data-untyped-default-value"), this.sourceBlock_ && isEnabled$$module$build$src$core$events$utils() && fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils($.CHANGE$$module$build$src$core$events$utils))(this.sourceBlock_, "field", this.name || null, a, this.value_))) } doValueUpdate_(a) {
       this.isTextValid_ =
-      this.isDirty_ = !0; this.value_ = a
+        this.isDirty_ = !0; this.value_ = a
     } applyColour() { if (this.sourceBlock_ && this.getConstants().FULL_BLOCK_FIELDS) { var a = this.sourceBlock_; this.borderRect_ ? this.borderRect_.setAttribute("stroke", a.style.colourTertiary) : a.pathObject.svgPath.setAttribute("fill", this.getConstants().FIELD_BORDER_RECT_COLOUR) } } render_() {
       super.render_(); if (this.isBeingEdited_) {
         this.resizeEditor_(); const a = this.htmlInput_; this.isTextValid_ ? (removeClass$$module$build$src$core$utils$dom(a, "blocklyInvalidInput"), setState$$module$build$src$core$utils$aria(a,
@@ -2573,7 +2573,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       a.width = "auto"; a.height = "auto"; a.fontSize = ""; a.transition = ""; a.boxShadow = ""; this.htmlInput_ = null; a = this.getClickTarget_(); if (!a) throw Error("A click target has not been set."); removeClass$$module$build$src$core$utils$dom(a, "editing")
     } onFinishEditing_(a) { } bindInputEvents_(a) { this.onKeyDownWrapper_ = conditionalBind$$module$build$src$core$browser_events(a, "keydown", this, this.onHtmlInputKeyDown_); this.onKeyInputWrapper_ = conditionalBind$$module$build$src$core$browser_events(a, "input", this, this.onHtmlInputChange_) } unbindInputEvents_() {
       this.onKeyDownWrapper_ &&
-      (unbind$$module$build$src$core$browser_events(this.onKeyDownWrapper_), this.onKeyDownWrapper_ = null); this.onKeyInputWrapper_ && (unbind$$module$build$src$core$browser_events(this.onKeyInputWrapper_), this.onKeyInputWrapper_ = null)
+        (unbind$$module$build$src$core$browser_events(this.onKeyDownWrapper_), this.onKeyDownWrapper_ = null); this.onKeyInputWrapper_ && (unbind$$module$build$src$core$browser_events(this.onKeyInputWrapper_), this.onKeyInputWrapper_ = null)
     } onHtmlInputKeyDown_(a) {
       "Enter" === a.key ? (hide$$module$build$src$core$widgetdiv(), hideWithoutAnimation$$module$build$src$core$dropdowndiv()) : "Escape" === a.key ? (this.setValue(this.htmlInput_.getAttribute("data-untyped-default-value")), hide$$module$build$src$core$widgetdiv(), hideWithoutAnimation$$module$build$src$core$dropdowndiv()) :
         "Tab" === a.key && (hide$$module$build$src$core$widgetdiv(), hideWithoutAnimation$$module$build$src$core$dropdowndiv(), this.sourceBlock_.tab(this, !a.shiftKey), a.preventDefault())
@@ -2744,7 +2744,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         if (this.rightAlignedDummyInputs.get(a)) {
           let c; for (let d = 0; d < a.elements.length; d++) { const e = a.elements[d]; Types$$module$build$src$core$renderers$measurables$types.isSpacer(e) && (c = e); if (Types$$module$build$src$core$renderers$measurables$types.isField(e) && e instanceof Field$$module$build$src$core$renderers$measurables$field && e.parentInput === this.rightAlignedDummyInputs.get(a)) break } if (c) {
             c.width +=
-            b; a.width += b; return
+              b; a.width += b; return
           }
         } super.addAlignmentPadding_(a, b)
       } adjustXPosition_() {
@@ -2858,7 +2858,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
             } applyColour_(a) {
               super.applyColour_(a); let b; null == (b = this.markerCircle) || b.setAttribute("fill", this.colour_); let c; null == (c = this.markerCircle) || c.setAttribute("stroke", this.colour_); if (this.isCursor()) {
                 a =
-                this.colour_ + ";transparent;transparent;"; let d; null == (d = this.markerCircle) || d.firstElementChild.setAttribute("values", a)
+                  this.colour_ + ";transparent;transparent;"; let d; null == (d = this.markerCircle) || d.firstElementChild.setAttribute("values", a)
               }
             }
           }, module$build$src$core$renderers$zelos$marker_svg = {}; module$build$src$core$renderers$zelos$marker_svg.MarkerSvg = MarkerSvg$$module$build$src$core$renderers$zelos$marker_svg; var PathObject$$module$build$src$core$renderers$common$path_object = class {
@@ -2970,7 +2970,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         a.checkCharacter)
     } saveState() { const a = this.saveLegacyState(FieldCheckbox$$module$build$src$core$field_checkbox); return null !== a ? a : this.getValueBoolean() } initView() { super.initView(); const a = this.getTextElement(); addClass$$module$build$src$core$utils$dom(a, "blocklyCheckbox"); a.style.display = this.value_ ? "block" : "none" } render_() { this.textContent_ && (this.textContent_.nodeValue = this.getDisplayText_()); this.updateSize_(this.getConstants().FIELD_CHECKBOX_X_OFFSET) } getDisplayText_() { return this.checkChar } setCheckCharacter(a) {
       this.checkChar =
-      a || FieldCheckbox$$module$build$src$core$field_checkbox.CHECK_CHAR; this.forceRerender()
+        a || FieldCheckbox$$module$build$src$core$field_checkbox.CHECK_CHAR; this.forceRerender()
     } showEditor_() { this.setValue(!this.value_) } doClassValidation_(a) { return !0 === a || "TRUE" === a ? "TRUE" : !1 === a || "FALSE" === a ? "FALSE" : null } doValueUpdate_(a) { this.value_ = this.convertValueToBool_(a); this.textElement_ && (this.textElement_.style.display = this.value_ ? "block" : "none") } getValue() { return this.value_ ? "TRUE" : "FALSE" } getValueBoolean() { return this.value_ } getText() { return String(this.convertValueToBool_(this.value_)) } convertValueToBool_(a) {
       return "string" ===
         typeof a ? "TRUE" === a : !!a
@@ -3099,7 +3099,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
           2 + d.baseline)); this.updateTransform(); this.onMouseUpWrapper = conditionalBind$$module$build$src$core$browser_events(this.svgGroup, "pointerup", this, this.onMouseUp); return this.svgGroup
     } show() { this.updateTransform(); this.svgGroup.setAttribute("display", "block") } updateTransform() { this.svgGroup.setAttribute("transform", "translate(" + this.position.x + "," + this.position.y + ")") } moveTo(a, b) { this.position.x = a; this.position.y = b; this.updateTransform() } isLabel() { return this.isLabel_ } getPosition() { return this.position } getButtonText() { return this.text } getTargetWorkspace() { return this.targetWorkspace } dispose() {
       this.onMouseUpWrapper &&
-      unbind$$module$build$src$core$browser_events(this.onMouseUpWrapper); this.svgGroup && removeNode$$module$build$src$core$utils$dom(this.svgGroup); this.svgText && this.workspace.getThemeManager().unsubscribe(this.svgText)
+        unbind$$module$build$src$core$browser_events(this.onMouseUpWrapper); this.svgGroup && removeNode$$module$build$src$core$utils$dom(this.svgGroup); this.svgText && this.workspace.getThemeManager().unsubscribe(this.svgText)
     } onMouseUp(a) {
       (a = this.targetWorkspace.getGesture(a)) && a.cancel(); this.isLabel_ && this.callbackKey ? console.warn("Labels should not have callbacks. Label text: " + this.text) : this.isLabel_ || this.callbackKey && this.targetWorkspace.getButtonCallback(this.callbackKey) ? this.isLabel_ || (a = this.targetWorkspace.getButtonCallback(this.callbackKey)) &&
         a(this) : console.warn("Buttons should have callbacks. Button text: " + this.text)
@@ -3156,7 +3156,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   }, module$build$src$core$scrollbar_pair = {}; module$build$src$core$scrollbar_pair.ScrollbarPair = ScrollbarPair$$module$build$src$core$scrollbar_pair; var WorkspaceDragger$$module$build$src$core$workspace_dragger = class {
     constructor(a) { this.workspace = a; this.horizontalScrollEnabled_ = this.workspace.isMovableHorizontally(); this.verticalScrollEnabled_ = this.workspace.isMovableVertically(); this.startScrollXY_ = new Coordinate$$module$build$src$core$utils$coordinate(a.scrollX, a.scrollY) } dispose() { this.workspace = null } startDrag() { getSelected$$module$build$src$core$common() && getSelected$$module$build$src$core$common().unselect() } endDrag(a) { this.drag(a) } drag(a) {
       a =
-      Coordinate$$module$build$src$core$utils$coordinate.sum(this.startScrollXY_, a); if (this.horizontalScrollEnabled_ && this.verticalScrollEnabled_) this.workspace.scroll(a.x, a.y); else if (this.horizontalScrollEnabled_) this.workspace.scroll(a.x, this.workspace.scrollY); else if (this.verticalScrollEnabled_) this.workspace.scroll(this.workspace.scrollX, a.y); else throw new TypeError("Invalid state.");
+        Coordinate$$module$build$src$core$utils$coordinate.sum(this.startScrollXY_, a); if (this.horizontalScrollEnabled_ && this.verticalScrollEnabled_) this.workspace.scroll(a.x, a.y); else if (this.horizontalScrollEnabled_) this.workspace.scroll(a.x, this.workspace.scrollY); else if (this.verticalScrollEnabled_) this.workspace.scroll(this.workspace.scrollX, a.y); else throw new TypeError("Invalid state.");
     }
   }, module$build$src$core$workspace_dragger = {}; module$build$src$core$workspace_dragger.WorkspaceDragger = WorkspaceDragger$$module$build$src$core$workspace_dragger; var ZOOM_IN_MULTIPLIER$$module$build$src$core$gesture = 5, ZOOM_OUT_MULTIPLIER$$module$build$src$core$gesture = 6, Gesture$$module$build$src$core$gesture = class {
     constructor(a, b) {
@@ -3212,7 +3212,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         new Coordinate$$module$build$src$core$utils$coordinate(a.pageX, a.pageY) : null
     } isMultiTouch() { return this.isMultiTouch_ } cancel() { this.isEnding_ || (longStop$$module$build$src$core$touch(), this.bubbleDragger ? this.bubbleDragger.endBubbleDrag(this.mostRecentEvent, this.currentDragDeltaXY) : this.blockDragger ? this.blockDragger.endDrag(this.mostRecentEvent, this.currentDragDeltaXY) : this.workspaceDragger && this.workspaceDragger.endDrag(this.currentDragDeltaXY), this.dispose()) } handleRightClick(a) {
       this.targetBlock ?
-      (this.bringBlockToFront(), this.targetBlock.workspace.hideChaff(!!this.flyout), this.targetBlock.showContextMenu(a)) : this.startBubble ? this.startBubble.showContextMenu(a) : this.startWorkspace_ && !this.flyout && (this.startWorkspace_.hideChaff(), this.startWorkspace_.showContextMenu(a)); a.preventDefault(); a.stopPropagation(); this.dispose()
+        (this.bringBlockToFront(), this.targetBlock.workspace.hideChaff(!!this.flyout), this.targetBlock.showContextMenu(a)) : this.startBubble ? this.startBubble.showContextMenu(a) : this.startWorkspace_ && !this.flyout && (this.startWorkspace_.hideChaff(), this.startWorkspace_.showContextMenu(a)); a.preventDefault(); a.stopPropagation(); this.dispose()
     } handleWsStart(a, b) {
       if (this.gestureHasStarted) throw Error("Tried to call gesture.handleWsStart, but the gesture had already been started."); this.setStartWorkspace(b); this.mostRecentEvent =
         a; this.doStart(a)
@@ -3285,7 +3285,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       if (a.name !== b) {
         var c = this.getVariable(b, a.type), d = this.workspace.getAllBlocks(!1), e = $.getGroup$$module$build$src$core$events$utils(); e || $.setGroup$$module$build$src$core$events$utils(!0); try {
           c && c.getId() !==
-          a.getId() ? this.renameVariableWithConflict_(a, b, c, d) : this.renameVariableAndUses_(a, b, d)
+            a.getId() ? this.renameVariableWithConflict_(a, b, c, d) : this.renameVariableAndUses_(a, b, d)
         } finally { $.setGroup$$module$build$src$core$events$utils(e) }
       }
     } renameVariableById(a, b) { const c = this.getVariableById(a); if (!c) throw Error("Tried to rename a variable that didn't exist. ID: " + a); this.renameVariable(c, b) } renameVariableAndUses_(a, b, c) { fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils(VAR_RENAME$$module$build$src$core$events$utils))(a, b)); a.name = b; for (b = 0; b < c.length; b++)c[b].updateVarName(a) } renameVariableWithConflict_(a,
@@ -3301,7 +3301,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         const b = this.getVariableById(a); if (b) {
           var c = b.name; const d = this.getVariableUsesById(a); for (let e = 0, f; f = d[e]; e++)if ("procedures_defnoreturn" === f.type || "procedures_defreturn" === f.type) {
             a =
-            String(f.getFieldValue("NAME")); c = $.Msg$$module$build$src$core$msg.CANNOT_DELETE_VARIABLE_PROCEDURE.replace("%1", c).replace("%2", a); alert$$module$build$src$core$dialog(c); return
+              String(f.getFieldValue("NAME")); c = $.Msg$$module$build$src$core$msg.CANNOT_DELETE_VARIABLE_PROCEDURE.replace("%1", c).replace("%2", a); alert$$module$build$src$core$dialog(c); return
           } 1 < d.length ? (c = $.Msg$$module$build$src$core$msg.DELETE_VARIABLE_CONFIRMATION.replace("%1", String(d.length)).replace("%2", c), confirm$$module$build$src$core$dialog(c, e => { e && b && this.deleteVariableInternal(b, d) })) : this.deleteVariableInternal(b, d)
         } else console.warn("Can't delete non-existent variable: " + a)
       } deleteVariableInternal(a,
@@ -3350,7 +3350,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
     constructor(a) { this.parentWorkspace = a; this.sounds = new Map; this.lastSound_ = null } dispose() { this.sounds.clear() } load(a, b) { if (a.length) { try { var c = new globalThis.Audio } catch (e) { return } for (let e = 0; e < a.length; e++) { const f = a[e], g = f.match(/\.(\w+)$/); if (g && c.canPlayType("audio/" + g[1])) { var d = new globalThis.Audio(f); break } } d && this.sounds.set(b, d) } } preload() {
       for (const a of this.sounds.values()) {
         a.volume =
-        .01; const b = a.play(); void 0 !== b ? b.then(a.pause).catch(function () { }) : a.pause(); if (IPAD$$module$build$src$core$utils$useragent || IPHONE$$module$build$src$core$utils$useragent) break
+          .01; const b = a.play(); void 0 !== b ? b.then(a.pause).catch(function () { }) : a.pause(); if (IPAD$$module$build$src$core$utils$useragent || IPHONE$$module$build$src$core$utils$useragent) break
       }
     } play(a, b) {
       var c = this.sounds.get(a); c ? (a = new Date, null !== this.lastSound_ && a.getTime() - this.lastSound_.getTime() < SOUND_LIMIT$$module$build$src$core$workspace_audio || (this.lastSound_ = a, c = IPAD$$module$build$src$core$utils$useragent || ANDROID$$module$build$src$core$utils$useragent ? c : c.cloneNode(), c.volume = void 0 === b ? 1 : b, c.play())) :
@@ -3406,7 +3406,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.metricsManager.getMetrics.bind(this.metricsManager)
     } getComponentManager() { return this.componentManager } setCursorSvg(a) { this.markerManager.setCursorSvg(a) } setMarkerSvg(a) { this.markerManager.setMarkerSvg(a) } getMarker(a) { return this.markerManager ? this.markerManager.getMarker(a) : null } getCursor() { return this.markerManager ? this.markerManager.getCursor() : null } getRenderer() { return this.renderer } getThemeManager() { return this.themeManager_ } getTheme() { return this.themeManager_.getTheme() } setTheme(a) {
       a ||
-      (a = Classic$$module$build$src$core$theme$classic); this.themeManager_.setTheme(a)
+        (a = Classic$$module$build$src$core$theme$classic); this.themeManager_.setTheme(a)
     } refreshTheme() {
       this.svgGroup_ && this.renderer.refreshDom(this.svgGroup_, this.getTheme()); this.updateBlockStyles_(this.getAllBlocks(!1).filter(function (b) { return !!b.getStyleName() })); this.refreshToolboxSelection(); this.toolbox_ && this.toolbox_.refreshTheme(); this.isVisible() && this.setVisible(!0); const a = new (get$$module$build$src$core$events$utils(THEME_CHANGE$$module$build$src$core$events$utils))(this.getTheme().name, this.id);
       fire$$module$build$src$core$events$utils(a)
@@ -3458,17 +3458,17 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
           this.highlightedBlocks.push(a) : removeElem$$module$build$src$core$utils$array(this.highlightedBlocks, a), a.setHighlighted(b)
       } paste(a) { if (!this.rendered || !a.type && !a.tagName) return null; this.currentGesture_ && this.currentGesture_.cancel(); const b = $.getGroup$$module$build$src$core$events$utils(); b || $.setGroup$$module$build$src$core$events$utils(!0); let c; try { c = a.type ? this.pasteBlock_(null, a) : "comment" === a.tagName.toLowerCase() ? this.pasteWorkspaceComment_(a) : this.pasteBlock_(a, null) } finally { $.setGroup$$module$build$src$core$events$utils(b) } return c } pasteBlock_(a,
         b) {
-          $.disable$$module$build$src$core$events$utils(); let c; try {
-            let d = 0, e = 0; if (a) { c = $.domToBlock$$module$build$src$core$xml(a, this); let f; d = parseInt(null != (f = a.getAttribute("x")) ? f : "0"); this.RTL && (d = -d); let g; e = parseInt(null != (g = a.getAttribute("y")) ? g : "0") } else b && (c = append$$module$build$src$core$serialization$blocks(b, this), d = b.x || 10, this.RTL && (d = this.getWidth() - d), e = b.y || 10); if (!isNaN(d) && !isNaN(e)) {
-              let f; do {
-                f = !1; const g = this.getAllBlocks(!1); for (let h = 0, k; k = g[h]; h++) {
-                  const l = k.getRelativeToSurfaceXY();
-                  if (1 >= Math.abs(d - l.x) && 1 >= Math.abs(e - l.y)) { f = !0; break }
-                } if (!f) { const h = c.getConnections_(!1); for (let k = 0, l; l = h[k]; k++)if (l.closest($.config$$module$build$src$core$config.snapRadius, new Coordinate$$module$build$src$core$utils$coordinate(d, e)).connection) { f = !0; break } } f && (d = this.RTL ? d - $.config$$module$build$src$core$config.snapRadius : d + $.config$$module$build$src$core$config.snapRadius, e += 2 * $.config$$module$build$src$core$config.snapRadius)
-              } while (f); c.moveTo(new Coordinate$$module$build$src$core$utils$coordinate(d,
-                e))
-            }
-          } finally { $.enable$$module$build$src$core$events$utils() } isEnabled$$module$build$src$core$events$utils() && !c.isShadow() && fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils($.CREATE$$module$build$src$core$events$utils))(c)); c.select(); return c
+      $.disable$$module$build$src$core$events$utils(); let c; try {
+        let d = 0, e = 0; if (a) { c = $.domToBlock$$module$build$src$core$xml(a, this); let f; d = parseInt(null != (f = a.getAttribute("x")) ? f : "0"); this.RTL && (d = -d); let g; e = parseInt(null != (g = a.getAttribute("y")) ? g : "0") } else b && (c = append$$module$build$src$core$serialization$blocks(b, this), d = b.x || 10, this.RTL && (d = this.getWidth() - d), e = b.y || 10); if (!isNaN(d) && !isNaN(e)) {
+          let f; do {
+            f = !1; const g = this.getAllBlocks(!1); for (let h = 0, k; k = g[h]; h++) {
+              const l = k.getRelativeToSurfaceXY();
+              if (1 >= Math.abs(d - l.x) && 1 >= Math.abs(e - l.y)) { f = !0; break }
+            } if (!f) { const h = c.getConnections_(!1); for (let k = 0, l; l = h[k]; k++)if (l.closest($.config$$module$build$src$core$config.snapRadius, new Coordinate$$module$build$src$core$utils$coordinate(d, e)).connection) { f = !0; break } } f && (d = this.RTL ? d - $.config$$module$build$src$core$config.snapRadius : d + $.config$$module$build$src$core$config.snapRadius, e += 2 * $.config$$module$build$src$core$config.snapRadius)
+          } while (f); c.moveTo(new Coordinate$$module$build$src$core$utils$coordinate(d,
+            e))
+        }
+      } finally { $.enable$$module$build$src$core$events$utils() } isEnabled$$module$build$src$core$events$utils() && !c.isShadow() && fire$$module$build$src$core$events$utils(new (get$$module$build$src$core$events$utils($.CREATE$$module$build$src$core$events$utils))(c)); c.select(); return c
     } pasteWorkspaceComment_(a) {
       $.disable$$module$build$src$core$events$utils(); let b; try {
         b = WorkspaceCommentSvg$$module$build$src$core$workspace_comment_svg.fromXmlRendered(a, this); let c, d = parseInt(null != (c = a.getAttribute("x")) ?
@@ -3491,10 +3491,10 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       } isMovableHorizontally() { const a = !!this.scrollbar; return this.isMovable() && (!a || a && this.scrollbar.canScrollHorizontally()) } isMovableVertically() { const a = !!this.scrollbar; return this.isMovable() && (!a || a && this.scrollbar.canScrollVertically()) } onMouseWheel_(a) {
         if (Gesture$$module$build$src$core$gesture.inProgress()) a.preventDefault(),
           a.stopPropagation(); else {
-            var b = this.options.zoomOptions && this.options.zoomOptions.wheel, c = this.options.moveOptions && this.options.moveOptions.wheel; if (b || c) {
-              var d = getScrollDeltaPixels$$module$build$src$core$browser_events(a); if (MAC$$module$build$src$core$utils$useragent) var e = a.metaKey; b && (a.ctrlKey || e || !c) ? (d = -d.y / 50, b = mouseToSvg$$module$build$src$core$browser_events(a, this.getParentSvg(), this.getInverseScreenCTM()), this.zoom(b.x, b.y, d)) : (b = this.scrollX - d.x, c = this.scrollY - d.y, a.shiftKey && !d.x && (b =
-                this.scrollX - d.y, c = this.scrollY), this.scroll(b, c)); a.preventDefault()
-            }
+          var b = this.options.zoomOptions && this.options.zoomOptions.wheel, c = this.options.moveOptions && this.options.moveOptions.wheel; if (b || c) {
+            var d = getScrollDeltaPixels$$module$build$src$core$browser_events(a); if (MAC$$module$build$src$core$utils$useragent) var e = a.metaKey; b && (a.ctrlKey || e || !c) ? (d = -d.y / 50, b = mouseToSvg$$module$build$src$core$browser_events(a, this.getParentSvg(), this.getInverseScreenCTM()), this.zoom(b.x, b.y, d)) : (b = this.scrollX - d.x, c = this.scrollY - d.y, a.shiftKey && !d.x && (b =
+              this.scrollX - d.y, c = this.scrollY), this.scroll(b, c)); a.preventDefault()
+          }
         }
       } getBlocksBoundingBox() { const a = this.getTopBoundedElements(); if (!a.length) return new Rect$$module$build$src$core$utils$rect(0, 0, 0, 0); const b = a[0].getBoundingRectangle(); for (let d = 1; d < a.length; d++) { var c = a[d]; c.isInsertionMarker && c.isInsertionMarker() || (c = c.getBoundingRectangle(), c.top < b.top && (b.top = c.top), c.bottom > b.bottom && (b.bottom = c.bottom), c.left < b.left && (b.left = c.left), c.right > b.right && (b.right = c.right)) } return b } cleanUp() {
         this.setResizesEnabled(!1);
@@ -3514,7 +3514,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
       } markFocused() { this.options.parentWorkspace ? this.options.parentWorkspace.markFocused() : (setMainWorkspace$$module$build$src$core$common(this), this.getParentSvg().focus({ preventScroll: !0 })) } zoom(a, b, c) {
         c = Math.pow(this.options.zoomOptions.scaleSpeed, c); const d = this.scale * c; if (this.scale !== d) {
           d > this.options.zoomOptions.maxScale ? c = this.options.zoomOptions.maxScale / this.scale :
-          d < this.options.zoomOptions.minScale && (c = this.options.zoomOptions.minScale / this.scale); var e = this.getCanvas().getCTM(), f = this.getParentSvg().createSVGPoint(); f.x = a; f.y = b; f = f.matrixTransform(e.inverse()); a = f.x; b = f.y; e = e.translate(a * (1 - c), b * (1 - c)).scale(c); this.scrollX = e.e; this.scrollY = e.f; this.setScale(d)
+            d < this.options.zoomOptions.minScale && (c = this.options.zoomOptions.minScale / this.scale); var e = this.getCanvas().getCTM(), f = this.getParentSvg().createSVGPoint(); f.x = a; f.y = b; f = f.matrixTransform(e.inverse()); a = f.x; b = f.y; e = e.translate(a * (1 - c), b * (1 - c)).scale(c); this.scrollX = e.e; this.scrollY = e.f; this.setScale(d)
         }
       } zoomCenter(a) { var b = this.getMetrics(); let c; this.flyout ? (c = b.svgWidth ? b.svgWidth / 2 : 0, b = b.svgHeight ? b.svgHeight / 2 : 0) : (c = b.viewWidth / 2 + b.absoluteLeft, b = b.viewHeight / 2 + b.absoluteTop); this.zoom(c, b, a) } zoomToFit() {
         if (this.isMovable()) {
@@ -3531,8 +3531,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         } else console.warn("Tried to move a non-movable workspace. This could result in blocks becoming inaccessible.")
       } centerOnBlock(a, b) { if (this.isMovable()) { var c = a ? this.getBlockById(a) : null; if (c) { a = c.getRelativeToSurfaceXY(); c = b ? { height: c.height, width: c.width } : c.getHeightWidth(); var d = this.scale; b = (a.x + (this.RTL ? -1 : 1) * c.width / 2) * d; a = (a.y + c.height / 2) * d; c = this.getMetrics(); this.scroll(-(b - c.viewWidth / 2), -(a - c.viewHeight / 2)) } } else console.warn("Tried to move a non-movable workspace. This could result in blocks becoming inaccessible.") } setScale(a) {
         this.options.zoomOptions.maxScale &&
-        a > this.options.zoomOptions.maxScale ? a = this.options.zoomOptions.maxScale : this.options.zoomOptions.minScale && a < this.options.zoomOptions.minScale && (a = this.options.zoomOptions.minScale); this.scale = a; this.hideChaff(!1); (a = this.getFlyout(!1)) && a.isVisible() && (a.reflow(), this.recordDragTargets()); this.grid && this.grid.update(this.scale); a = this.getMetrics(); this.scrollX -= a.absoluteLeft; this.scrollY -= a.absoluteTop; a.viewLeft += a.absoluteLeft; a.viewTop += a.absoluteTop; this.scroll(this.scrollX, this.scrollY); this.scrollbar &&
-          (this.flyout ? this.scrollbar.resizeView(a) : this.scrollbar.resizeContent(a))
+          a > this.options.zoomOptions.maxScale ? a = this.options.zoomOptions.maxScale : this.options.zoomOptions.minScale && a < this.options.zoomOptions.minScale && (a = this.options.zoomOptions.minScale); this.scale = a; this.hideChaff(!1); (a = this.getFlyout(!1)) && a.isVisible() && (a.reflow(), this.recordDragTargets()); this.grid && this.grid.update(this.scale); a = this.getMetrics(); this.scrollX -= a.absoluteLeft; this.scrollY -= a.absoluteTop; a.viewLeft += a.absoluteLeft; a.viewTop += a.absoluteTop; this.scroll(this.scrollX, this.scrollY); this.scrollbar &&
+            (this.flyout ? this.scrollbar.resizeView(a) : this.scrollbar.resizeContent(a))
       } getScale() { return this.options.parentWorkspace ? this.options.parentWorkspace.getScale() : this.scale } scroll(a, b) {
         this.hideChaff(!0); const c = this.getMetrics(); a = Math.min(a, -c.scrollLeft); b = Math.min(b, -c.scrollTop); const d = c.scrollTop + Math.max(0, c.scrollHeight - c.viewHeight); a = Math.max(a, -(c.scrollLeft + Math.max(0, c.scrollWidth - c.viewWidth))); b = Math.max(b, -d); this.scrollX = a; this.scrollY = b; this.scrollbar && this.scrollbar.set(-(a + c.scrollLeft),
           -(b + c.scrollTop), !1); a += c.absoluteLeft; b += c.absoluteTop; this.translate(a, b)
@@ -3789,10 +3789,10 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   }, module$build$src$core$renderers$geras$drawer = {}; module$build$src$core$renderers$geras$drawer.Drawer = Drawer$$module$build$src$core$renderers$geras$drawer; var HighlightConstantProvider$$module$build$src$core$renderers$geras$highlight_constants = class {
     constructor(a) { this.OFFSET = .5; this.constantProvider = a; this.START_POINT = moveBy$$module$build$src$core$utils$svg_paths(this.OFFSET, this.OFFSET) } init() { this.INSIDE_CORNER = this.makeInsideCorner(); this.OUTSIDE_CORNER = this.makeOutsideCorner(); this.PUZZLE_TAB = this.makePuzzleTab(); this.NOTCH = this.makeNotch(); this.JAGGED_TEETH = this.makeJaggedTeeth(); this.START_HAT = this.makeStartHat() } makeInsideCorner() {
       const a = this.constantProvider.CORNER_RADIUS,
-      b = this.OFFSET, c = (1 - Math.SQRT1_2) * (a + b) - b, d = moveBy$$module$build$src$core$utils$svg_paths(c, c) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a, point$$module$build$src$core$utils$svg_paths(-c - b, a - c)), e = arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a + b, point$$module$build$src$core$utils$svg_paths(a + b, a + b)), f = moveBy$$module$build$src$core$utils$svg_paths(c, -c) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a + b, point$$module$build$src$core$utils$svg_paths(a - c, c + b)); return {
-        width: a +
-          b, height: a, pathTop(g) { return g ? d : "" }, pathBottom(g) { return g ? e : f }
-      }
+        b = this.OFFSET, c = (1 - Math.SQRT1_2) * (a + b) - b, d = moveBy$$module$build$src$core$utils$svg_paths(c, c) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a, point$$module$build$src$core$utils$svg_paths(-c - b, a - c)), e = arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a + b, point$$module$build$src$core$utils$svg_paths(a + b, a + b)), f = moveBy$$module$build$src$core$utils$svg_paths(c, -c) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,0", a + b, point$$module$build$src$core$utils$svg_paths(a - c, c + b)); return {
+          width: a +
+            b, height: a, pathTop(g) { return g ? d : "" }, pathBottom(g) { return g ? e : f }
+        }
     } makeOutsideCorner() {
       const a = this.constantProvider.CORNER_RADIUS, b = this.OFFSET, c = (1 - Math.SQRT1_2) * (a - b) + b, d = moveBy$$module$build$src$core$utils$svg_paths(c, c) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,1", a - b, point$$module$build$src$core$utils$svg_paths(a - c, -c + b)), e = moveBy$$module$build$src$core$utils$svg_paths(b, a) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,1", a - b, point$$module$build$src$core$utils$svg_paths(a, -a +
         b)), f = -c, g = moveBy$$module$build$src$core$utils$svg_paths(c, f) + arc$$module$build$src$core$utils$svg_paths("a", "0 0,1", a - b, point$$module$build$src$core$utils$svg_paths(-c + b, -f - a)); return { height: a, topLeft(h) { return h ? d : e }, bottomLeft() { return g } }
@@ -3812,8 +3812,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
   }, module$build$src$core$renderers$geras$highlight_constants = {}; module$build$src$core$renderers$geras$highlight_constants.HighlightConstantProvider = HighlightConstantProvider$$module$build$src$core$renderers$geras$highlight_constants; var InlineInput$$module$build$src$core$renderers$geras$measurables$inline_input = class extends InlineInput$$module$build$src$core$renderers$measurables$inline_input { constructor(a, b) { super(a, b); this.constants_ = a; this.connectedBlock && (this.width += this.constants_.DARK_PATH_OFFSET, this.height += this.constants_.DARK_PATH_OFFSET) } }, module$build$src$core$renderers$geras$measurables$inline_input = {}; module$build$src$core$renderers$geras$measurables$inline_input.InlineInput = InlineInput$$module$build$src$core$renderers$geras$measurables$inline_input; var StatementInput$$module$build$src$core$renderers$geras$measurables$statement_input = class extends StatementInput$$module$build$src$core$renderers$measurables$statement_input { constructor(a, b) { super(a, b); this.constants_ = a; this.connectedBlock && (this.height += this.constants_.DARK_PATH_OFFSET) } }, module$build$src$core$renderers$geras$measurables$statement_input = {}; module$build$src$core$renderers$geras$measurables$statement_input.StatementInput = StatementInput$$module$build$src$core$renderers$geras$measurables$statement_input; var RenderInfo$$module$build$src$core$renderers$geras$info = class extends RenderInfo$$module$build$src$core$renderers$common$info {
     constructor(a, b) { super(a, b); this.renderer_ = a } getRenderer() { return this.renderer_ } populateBottomRow_() { super.populateBottomRow_(); this.block_.inputList.length && this.block_.inputList[this.block_.inputList.length - 1] instanceof StatementInput$$module$build$src$core$inputs$statement_input || (this.bottomRow.minHeight = this.constants_.MEDIUM_PADDING - this.constants_.DARK_PATH_OFFSET) } addInput_(a,
       b) {
-        this.isInline && a instanceof $.ValueInput$$module$build$src$core$inputs$value_input ? (b.elements.push(new InlineInput$$module$build$src$core$renderers$geras$measurables$inline_input(this.constants_, a)), b.hasInlineInput = !0) : a instanceof StatementInput$$module$build$src$core$inputs$statement_input ? (b.elements.push(new StatementInput$$module$build$src$core$renderers$geras$measurables$statement_input(this.constants_, a)), b.hasStatement = !0) : a instanceof $.ValueInput$$module$build$src$core$inputs$value_input ?
-          (b.elements.push(new ExternalValueInput$$module$build$src$core$renderers$measurables$external_value_input(this.constants_, a)), b.hasExternalInput = !0) : a instanceof DummyInput$$module$build$src$core$inputs$dummy_input && (b.minHeight = Math.max(b.minHeight, this.constants_.DUMMY_INPUT_MIN_HEIGHT), b.hasDummyInput = !0); this.isInline || null !== b.align || (b.align = a.align)
+      this.isInline && a instanceof $.ValueInput$$module$build$src$core$inputs$value_input ? (b.elements.push(new InlineInput$$module$build$src$core$renderers$geras$measurables$inline_input(this.constants_, a)), b.hasInlineInput = !0) : a instanceof StatementInput$$module$build$src$core$inputs$statement_input ? (b.elements.push(new StatementInput$$module$build$src$core$renderers$geras$measurables$statement_input(this.constants_, a)), b.hasStatement = !0) : a instanceof $.ValueInput$$module$build$src$core$inputs$value_input ?
+        (b.elements.push(new ExternalValueInput$$module$build$src$core$renderers$measurables$external_value_input(this.constants_, a)), b.hasExternalInput = !0) : a instanceof DummyInput$$module$build$src$core$inputs$dummy_input && (b.minHeight = Math.max(b.minHeight, this.constants_.DUMMY_INPUT_MIN_HEIGHT), b.hasDummyInput = !0); this.isInline || null !== b.align || (b.align = a.align)
     } addElemSpacing_() {
       let a = !1; for (let c = 0, d; d = this.rows[c]; c++)d.hasExternalInput && (a = !0); for (let c = 0, d; d = this.rows[c]; c++) {
         var b = d.elements; d.elements =
@@ -3896,10 +3896,10 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         a.isEditable ? this.constants_.MEDIUM_PADDING : Types$$module$build$src$core$renderers$measurables$types.isIcon(a) ? 2 * this.constants_.LARGE_PADDING + 1 : Types$$module$build$src$core$renderers$measurables$types.isHat(a) ? this.constants_.NO_PADDING : Types$$module$build$src$core$renderers$measurables$types.isPreviousOrNextConnection(a) ? this.constants_.LARGE_PADDING : Types$$module$build$src$core$renderers$measurables$types.isLeftRoundedCorner(a) ? this.constants_.MIN_BLOCK_WIDTH : Types$$module$build$src$core$renderers$measurables$types.isJaggedEdge(a) ?
           this.constants_.NO_PADDING : this.constants_.LARGE_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isInput(a) && !b) { if (Types$$module$build$src$core$renderers$measurables$types.isExternalInput(a)) return this.constants_.NO_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(a)) return this.constants_.LARGE_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isStatementInput(a)) return this.constants_.NO_PADDING } if (!Types$$module$build$src$core$renderers$measurables$types.isInput(a) &&
             b && Types$$module$build$src$core$renderers$measurables$types.isInput(b)) {
-              if (Types$$module$build$src$core$renderers$measurables$types.isField(a) && a.isEditable) { if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(b) || Types$$module$build$src$core$renderers$measurables$types.isExternalInput(b)) return this.constants_.SMALL_PADDING } else {
-                if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(b) || Types$$module$build$src$core$renderers$measurables$types.isExternalInput(b)) return this.constants_.MEDIUM_LARGE_PADDING;
-                if (Types$$module$build$src$core$renderers$measurables$types.isStatementInput(b)) return this.constants_.LARGE_PADDING
-              } return this.constants_.LARGE_PADDING - 1
+        if (Types$$module$build$src$core$renderers$measurables$types.isField(a) && a.isEditable) { if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(b) || Types$$module$build$src$core$renderers$measurables$types.isExternalInput(b)) return this.constants_.SMALL_PADDING } else {
+          if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(b) || Types$$module$build$src$core$renderers$measurables$types.isExternalInput(b)) return this.constants_.MEDIUM_LARGE_PADDING;
+          if (Types$$module$build$src$core$renderers$measurables$types.isStatementInput(b)) return this.constants_.LARGE_PADDING
+        } return this.constants_.LARGE_PADDING - 1
       } if (Types$$module$build$src$core$renderers$measurables$types.isIcon(a) && b && !Types$$module$build$src$core$renderers$measurables$types.isInput(b)) return this.constants_.LARGE_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isInlineInput(a) && b && Types$$module$build$src$core$renderers$measurables$types.isField(b)) return b.isEditable ?
         this.constants_.MEDIUM_PADDING : this.constants_.LARGE_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isLeftSquareCorner(a) && b) { if (Types$$module$build$src$core$renderers$measurables$types.isHat(b)) return this.constants_.NO_PADDING; if (Types$$module$build$src$core$renderers$measurables$types.isPreviousConnection(b) || Types$$module$build$src$core$renderers$measurables$types.isNextConnection(b)) return b.notchOffset } return Types$$module$build$src$core$renderers$measurables$types.isLeftRoundedCorner(a) &&
           b ? b.notchOffset - this.constants_.CORNER_RADIUS : Types$$module$build$src$core$renderers$measurables$types.isField(a) && b && Types$$module$build$src$core$renderers$measurables$types.isField(b) && a.isEditable === b.isEditable || b && Types$$module$build$src$core$renderers$measurables$types.isJaggedEdge(b) ? this.constants_.LARGE_PADDING : this.constants_.MEDIUM_PADDING
@@ -3908,8 +3908,8 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.constants_.EMPTY_BLOCK_SPACER_HEIGHT : Types$$module$build$src$core$renderers$measurables$types.isTopRow(a) || Types$$module$build$src$core$renderers$measurables$types.isBottomRow(b) ? this.constants_.NO_PADDING : a.hasExternalInput && b.hasExternalInput ? this.constants_.LARGE_PADDING : !a.hasStatement && b.hasStatement ? this.constants_.BETWEEN_STATEMENT_PADDING_Y : a.hasStatement && b.hasStatement || a.hasDummyInput || b.hasDummyInput ? this.constants_.LARGE_PADDING : this.constants_.MEDIUM_PADDING
     } getElemCenterline_(a,
       b) {
-        if (Types$$module$build$src$core$renderers$measurables$types.isSpacer(b)) return a.yPos + b.height / 2; if (Types$$module$build$src$core$renderers$measurables$types.isBottomRow(a)) return a = a.yPos + a.height - a.descenderHeight, Types$$module$build$src$core$renderers$measurables$types.isNextConnection(b) ? a + b.height / 2 : a - b.height / 2; if (Types$$module$build$src$core$renderers$measurables$types.isTopRow(a)) return Types$$module$build$src$core$renderers$measurables$types.isHat(b) ? a.capline - b.height / 2 : a.capline + b.height /
-          2; let c = a.yPos; return c = Types$$module$build$src$core$renderers$measurables$types.isField(b) && a.hasStatement ? c + (this.constants_.TALL_INPUT_FIELD_OFFSET_Y + b.height / 2) : c + a.height / 2
+      if (Types$$module$build$src$core$renderers$measurables$types.isSpacer(b)) return a.yPos + b.height / 2; if (Types$$module$build$src$core$renderers$measurables$types.isBottomRow(a)) return a = a.yPos + a.height - a.descenderHeight, Types$$module$build$src$core$renderers$measurables$types.isNextConnection(b) ? a + b.height / 2 : a - b.height / 2; if (Types$$module$build$src$core$renderers$measurables$types.isTopRow(a)) return Types$$module$build$src$core$renderers$measurables$types.isHat(b) ? a.capline - b.height / 2 : a.capline + b.height /
+        2; let c = a.yPos; return c = Types$$module$build$src$core$renderers$measurables$types.isField(b) && a.hasStatement ? c + (this.constants_.TALL_INPUT_FIELD_OFFSET_Y + b.height / 2) : c + a.height / 2
     } finalize_() {
       let a = 0, b = 0; for (var c = 0; c < this.rows.length; c++) { const e = this.rows[c]; e.yPos = b; e.xPos = this.startX; b += e.height; a = Math.max(a, e.widthWithConnectedBlocks); var d = b - this.topRow.ascenderHeight; e === this.bottomRow && d < this.constants_.MIN_BLOCK_HEIGHT && (d = this.constants_.MIN_BLOCK_HEIGHT - d, this.bottomRow.height += d, b += d); this.recordElemPositions_(e) } this.outputConnection &&
         this.block_.nextConnection && this.block_.nextConnection.isConnected() && (c = this.block_.nextConnection.targetBlock()) && (a = Math.max(a, c.getHeightWidth().width)); this.bottomRow.baseline = b - this.bottomRow.descenderHeight; this.widthWithChildren = a + this.startX; this.height = b; this.startY = this.topRow.capline
@@ -3936,7 +3936,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
             this.hide()
         } makeDefaultCssConfig_() { return { container: "blocklyToolboxCategory", row: "blocklyTreeRow", rowcontentcontainer: "blocklyTreeRowContentContainer", icon: "blocklyTreeIcon", label: "blocklyTreeLabel", contents: "blocklyToolboxContents", selected: "blocklyTreeSelected", openicon: "blocklyTreeIconOpen", closedicon: "blocklyTreeIconClosed" } } parseContents_(a) { if ("custom" in a) this.flyoutItems_ = a.custom; else if (a = a.contents) for (let b = 0; b < a.length; b++) { const c = a[b]; Array.isArray(this.flyoutItems_) && this.flyoutItems_.push(c) } } parseCategoryDef_(a) {
           this.name_ =
-          "name" in a ? replaceMessageReferences$$module$build$src$core$utils$parsing(a.name) : ""; this.colour_ = this.getColour_(a); Object.assign(this.cssConfig_, a.cssconfig || a.cssConfig)
+            "name" in a ? replaceMessageReferences$$module$build$src$core$utils$parsing(a.name) : ""; this.colour_ = this.getColour_(a); Object.assign(this.cssConfig_, a.cssconfig || a.cssConfig)
         } createDom_() {
           this.htmlDiv_ = this.createContainer_(); setRole$$module$build$src$core$utils$aria(this.htmlDiv_, Role$$module$build$src$core$utils$aria.TREEITEM); setState$$module$build$src$core$utils$aria(this.htmlDiv_, State$$module$build$src$core$utils$aria.SELECTED, !1); setState$$module$build$src$core$utils$aria(this.htmlDiv_, State$$module$build$src$core$utils$aria.LEVEL,
             this.level_ + 1); this.rowDiv_ = this.createRowContainer_(); this.rowDiv_.style.pointerEvents = "auto"; this.htmlDiv_.appendChild(this.rowDiv_); this.rowContents_ = this.createRowContentsContainer_(); this.rowContents_.style.pointerEvents = "none"; this.rowDiv_.appendChild(this.rowContents_); this.iconDom_ = this.createIconDom_(); setRole$$module$build$src$core$utils$aria(this.iconDom_, Role$$module$build$src$core$utils$aria.PRESENTATION); this.rowContents_.appendChild(this.iconDom_); this.labelDom_ = this.createLabelDom_(this.name_);
@@ -3954,7 +3954,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
             a : this.rowDiv_.style.borderLeft = a)
         } getColour_(a) { const b = a.categorystyle || a.categoryStyle; if ((a = a.colour) && b) console.warn('Toolbox category "' + this.name_ + '" must not have both a style and a colour'); else { if (b) return this.getColourfromStyle_(b); if (a) return this.parseColour_(a) } return "" } getColourfromStyle_(a) { var b = this.workspace_.getTheme(); if (a && b) { if ((b = b.categoryStyles[a]) && b.colour) return this.parseColour_(b.colour); console.warn('Style "' + a + '" must exist and contain a colour value') } return "" } getClickTarget() { return this.rowDiv_ } parseColour_(a) {
           a =
-          replaceMessageReferences$$module$build$src$core$utils$parsing(a); if (null == a || "" === a) return ""; var b = Number(a); if (isNaN(b)) { if (b = parse$$module$build$src$core$utils$colour(a)) return b; console.warn('Toolbox category "' + this.name_ + '" has unrecognized colour attribute: ' + a); return "" } return hueToHex$$module$build$src$core$utils$colour(b)
+            replaceMessageReferences$$module$build$src$core$utils$parsing(a); if (null == a || "" === a) return ""; var b = Number(a); if (isNaN(b)) { if (b = parse$$module$build$src$core$utils$colour(a)) return b; console.warn('Toolbox category "' + this.name_ + '" has unrecognized colour attribute: ' + a); return "" } return hueToHex$$module$build$src$core$utils$colour(b)
         } openIcon_(a) {
           if (a) {
             var b = this.cssConfig_.closedicon; b && removeClasses$$module$build$src$core$utils$dom(a, b); (b = this.cssConfig_.openicon) && addClass$$module$build$src$core$utils$dom(a,
@@ -4037,13 +4037,13 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         c.toLowerCase())) a = new c(a, this), a.init(), this.addToolboxItem_(a), (c = a.getDiv()) && b.appendChild(c), a.getClickTarget() && a.getClickTarget().setAttribute("id", a.getId())
     } addToolboxItem_(a) { this.contents_.push(a); this.contentMap_[a.getId()] = a; if (a.isCollapsible()) { a = a.getChildToolboxItems(); for (let b = 0; b < a.length; b++)this.addToolboxItem_(a[b]) } } getToolboxItems() { return this.contents_ } addStyle(a) { a && this.HtmlDiv && addClass$$module$build$src$core$utils$dom(this.HtmlDiv, a) } removeStyle(a) {
       a && this.HtmlDiv &&
-      removeClass$$module$build$src$core$utils$dom(this.HtmlDiv, a)
+        removeClass$$module$build$src$core$utils$dom(this.HtmlDiv, a)
     } getClientRect() {
       if (!this.HtmlDiv || !this.isVisible_) return null; var a = this.HtmlDiv.getBoundingClientRect(); const b = a.top, c = b + a.height, d = a.left; a = d + a.width; return this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.TOP ? new Rect$$module$build$src$core$utils$rect(-1E7, c, -1E7, 1E7) : this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.BOTTOM ? new Rect$$module$build$src$core$utils$rect(b, 1E7, -1E7, 1E7) : this.toolboxPosition ===
         Position$$module$build$src$core$utils$toolbox.LEFT ? new Rect$$module$build$src$core$utils$rect(-1E7, 1E7, -1E7, a) : new Rect$$module$build$src$core$utils$rect(-1E7, 1E7, d, 1E7)
     } wouldDelete(a, b) { a instanceof BlockSvg$$module$build$src$core$block_svg ? this.updateWouldDelete_(!a.getParent() && a.isDeletable()) : this.updateWouldDelete_(a.isDeletable()); return this.wouldDelete_ } onDragEnter(a) { this.updateCursorDeleteStyle_(!0) } onDragExit(a) { this.updateCursorDeleteStyle_(!1) } onDrop(a) { this.updateCursorDeleteStyle_(!1) } updateWouldDelete_(a) {
       a !==
-      this.wouldDelete_ && (this.updateCursorDeleteStyle_(!1), this.wouldDelete_ = a, this.updateCursorDeleteStyle_(!0))
+        this.wouldDelete_ && (this.updateCursorDeleteStyle_(!1), this.wouldDelete_ = a, this.updateCursorDeleteStyle_(!0))
     } updateCursorDeleteStyle_(a) { const b = this.wouldDelete_ ? "blocklyToolboxDelete" : "blocklyToolboxGrab"; a ? this.addStyle(b) : this.removeStyle(b) } getToolboxItemById(a) { return this.contentMap_[a] || null } getWidth() { return this.width_ } getHeight() { return this.height_ } getFlyout() { return this.flyout_ } getWorkspace() { return this.workspace_ } getSelectedItem() { return this.selectedItem_ } getPreviouslySelectedItem() { return this.previouslySelectedItem_ } isHorizontal() { return this.horizontalLayout_ } position() {
       const a =
         this.workspace_.getMetrics(), b = this.HtmlDiv; b && (this.horizontalLayout_ ? (b.style.left = "0", b.style.height = "auto", b.style.width = "100%", this.height_ = b.offsetHeight, this.width_ = a.viewWidth, this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.TOP ? b.style.top = "0" : b.style.bottom = "0") : (this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.RIGHT ? b.style.right = "0" : b.style.left = "0", b.style.height = "100%", this.width_ = b.offsetWidth, this.height_ = a.viewHeight), this.flyout_.position())
@@ -4052,13 +4052,13 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.workspace_, b = this.HtmlDiv.getBoundingClientRect(); a.translate(this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.LEFT ? a.scrollX + b.width : a.scrollX, this.toolboxPosition === Position$$module$build$src$core$utils$toolbox.TOP ? a.scrollY + b.height : a.scrollY); svgResize$$module$build$src$core$common(a)
     } clearSelection() { this.setSelectedItem(null) } refreshTheme() { for (let a = 0; a < this.contents_.length; a++) { const b = this.contents_[a]; b.refreshTheme && b.refreshTheme() } } refreshSelection() {
       this.selectedItem_ &&
-      this.selectedItem_.isSelectable() && this.selectedItem_.getContents().length && this.flyout_.show(this.selectedItem_.getContents())
+        this.selectedItem_.isSelectable() && this.selectedItem_.getContents().length && this.flyout_.show(this.selectedItem_.getContents())
     } setVisible(a) { this.isVisible_ !== a && (this.HtmlDiv.style.display = a ? "block" : "none", this.isVisible_ = a, this.workspace_.recordDragTargets()) } autoHide(a) { !a && this.flyout_ && this.flyout_.autoClose && this.clearSelection() } setSelectedItem(a) {
       const b = this.selectedItem_; !a && !b || a && !isSelectableToolboxItem$$module$build$src$core$interfaces$i_selectable_toolbox_item(a) || (this.shouldDeselectItem_(b,
         a) && null !== b && this.deselectItem_(b), this.shouldSelectItem_(b, a) && null !== a && this.selectItem_(b, a), this.updateFlyout_(b, a), this.fireSelectEvent_(b, a))
     } shouldDeselectItem_(a, b) { return null !== a && (!a.isCollapsible() || a !== b) } shouldSelectItem_(a, b) { return null !== b && b !== a } deselectItem_(a) { this.selectedItem_ = null; this.previouslySelectedItem_ = a; a.setSelected(!1); setState$$module$build$src$core$utils$aria(this.contentsDiv_, State$$module$build$src$core$utils$aria.ACTIVEDESCENDANT, "") } selectItem_(a, b) {
       this.selectedItem_ =
-      b; this.previouslySelectedItem_ = a; b.setSelected(!0); setState$$module$build$src$core$utils$aria(this.contentsDiv_, State$$module$build$src$core$utils$aria.ACTIVEDESCENDANT, b.getId())
+        b; this.previouslySelectedItem_ = a; b.setSelected(!0); setState$$module$build$src$core$utils$aria(this.contentsDiv_, State$$module$build$src$core$utils$aria.ACTIVEDESCENDANT, b.getId())
     } selectItemByPosition(a) { -1 < a && a < this.contents_.length && (a = this.contents_[a], a.isSelectable() && this.setSelectedItem(a)) } updateFlyout_(a, b) { b && (a !== b || b.isCollapsible()) && b.getContents().length ? (this.flyout_.show(b.getContents()), this.flyout_.scrollToStart()) : this.flyout_.hide() } fireSelectEvent_(a, b) {
       const c = a && a.getName();
       let d = b && b.getName(); a === b && (d = null); a = new (get$$module$build$src$core$events$utils(TOOLBOX_ITEM_SELECT$$module$build$src$core$events$utils))(c, d, this.workspace_.id); fire$$module$build$src$core$events$utils(a)
@@ -4119,7 +4119,7 @@ ${b} to its parent, because: ${a}`); this.childBlock = c; this.childState = d
         this.workspace.toolboxPosition === Position$$module$build$src$core$utils$toolbox.RIGHT || this.workspace.horizontalLayout && this.workspace.RTL; let c; null == (c = this.svgLid) || c.setAttribute("transform", "rotate(" + (b ? -a : a) + "," + (b ? 4 : WIDTH$$module$build$src$core$trashcan - 4) + "," + (LID_HEIGHT$$module$build$src$core$trashcan - 2) + ")")
     } setMinOpenness(a) { this.minOpenness = a; this.isLidOpen || this.setLidAngle(a * MAX_LID_ANGLE$$module$build$src$core$trashcan) } closeLid() { this.setLidOpen(!1) } click() { this.hasContents() && this.openFlyout() } fireUiEvent(a) {
       a =
-      new (get$$module$build$src$core$events$utils(TRASHCAN_OPEN$$module$build$src$core$events$utils))(a, this.workspace.id); fire$$module$build$src$core$events$utils(a)
+        new (get$$module$build$src$core$events$utils(TRASHCAN_OPEN$$module$build$src$core$events$utils))(a, this.workspace.id); fire$$module$build$src$core$events$utils(a)
     } blockMouseDownWhenOpenable(a) { !this.contentsIsOpen() && this.hasContents() && a.stopPropagation() } mouseOver() { this.hasContents() && this.setLidOpen(!0) } mouseOut() { this.setLidOpen(!1) } onDelete(a) {
       if (!(0 >= this.workspace.options.maxTrashcanContents || a.type !== $.DELETE$$module$build$src$core$events$utils || a.type !== $.DELETE$$module$build$src$core$events$utils ||
         a.wasShadow)) { if (!a.oldJson) throw Error("Encountered a delete event without proper oldJson"); a = JSON.stringify(this.cleanBlockJson(a.oldJson)); if (-1 === this.contents.indexOf(a)) { for (this.contents.unshift(a); this.contents.length > this.workspace.options.maxTrashcanContents;)this.contents.pop(); this.setMinOpenness(HAS_BLOCKS_LID_ANGLE$$module$build$src$core$trashcan) } }

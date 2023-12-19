@@ -26,7 +26,7 @@ javascript.javascriptGenerator.forBlock['get_info'] = function (block, generator
 javascript.javascriptGenerator.forBlock['program_run'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    sheet';
+  var code = '    sheet<br>';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -170,7 +170,7 @@ javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
   var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>";
-  code += "    var week_num =date.getDay()<br>;";
+  code += "    var week_num =date.getDay();<br>";
   code += "    var week = daysOfWeek[week_num];<br>";
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
@@ -183,7 +183,7 @@ javascript.javascriptGenerator.forBlock['block_input'] = function (block, genera
   // TODO: Assemble javascript into code variable.
   var code = `sheet.getRange(${cell_numm}).setValue(${cell_contents});<br>`;
   // TODO: Change ORDER_NONE to the correct strength.
-  return code
+  return code;
 };
 javascript.javascriptGenerator.forBlock['string_variable'] = function(block, generator) {
   var text_string_variable = block.getFieldValue('string_variable');
@@ -208,6 +208,12 @@ javascript.javascriptGenerator.forBlock['min_variable'] = function(block, genera
 javascript.javascriptGenerator.forBlock['day_variable'] = function(block, generator) {
   // TODO: Assemble javascript into code variable.
   var code = 'day';
+  // TODO: Change ATOMIC to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+javascript.javascriptGenerator.forBlock['hour_variable'] = function(block, generator) {
+  // TODO: Assemble javascript into code variable.
+  var code = 'hour';
   // TODO: Change ATOMIC to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
