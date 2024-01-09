@@ -483,6 +483,35 @@ Blockly.defineBlocksWithJsonArray(
     "colour": 290,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "combine_block",
+    "message0": "文字列を結合 %1 %2 %3 %4",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "combine_1",
+        "check": "String"
+      },
+      {
+        "type": "input_value",
+        "name": "combine_2",
+        "check": "String"
+      },
+      {
+        "type": "input_value",
+        "name": "combine_3",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "output": "String",
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]
 );

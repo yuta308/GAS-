@@ -16,17 +16,17 @@
         <!-- 自作ブロックの定義 -->
         <script src="/static/js/myblock.js"></script>
         <!-- ワークスペースのエリア -->
-        <div id="blocklyDiv" style="height: 600px; width: 1000px;"></div>
+        <div id="blocklyDiv" style="height: 800px; width: 1400px;"></div>
         <button onclick="doCode()">コードの実行</button>
         <!-- ツールボックスの定義 -->
         <xml id="toolbox">
             <category name="スプレッドシート操作" color="210">
                 <block type="function_name"></block>
                 <block type="get_info"></block>
-                <block type="getrange"></block>
+                <!-- <block type="getrange"></block>
                 <block type="setValue"></block>
-                <block type="program_run"></block>
-                <block type="logic_sample"></block>
+                <block type="program_run"></block> -->
+                <!-- <block type="logic_sample"></block> -->
                 <block type="logic_sample2"></block>
                 <block type="get_last_low"></block>
                 <block type="get_value"></block>
@@ -60,7 +60,8 @@
                 <block type="day_variable"></block>
                 <block type="month_variable"></block>
                 <block type="week_variable"></block>
-                <block type="get_value_data"></block>                
+                <block type="get_value_data"></block>
+                <block type="combine_block"></block>               
             </category>
             <category name="メール" color="#6B7CD3">
                 <block type="send_mail"></block>

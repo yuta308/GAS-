@@ -195,7 +195,7 @@ javascript.javascriptGenerator.forBlock['string_variable'] = function(block, gen
 
 javascript.javascriptGenerator.forBlock['hour_variable'] = function(block, generator) {
   // TODO: Assemble javascript into code variable.
-  var code = 'hour';
+  var code = 'hours';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -213,7 +213,7 @@ javascript.javascriptGenerator.forBlock['day_variable'] = function(block, genera
 };
 javascript.javascriptGenerator.forBlock['hour_variable'] = function(block, generator) {
   // TODO: Assemble javascript into code variable.
-  var code = 'hour';
+  var code = 'hours';
   // TODO: Change ATOMIC to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -278,4 +278,14 @@ javascript.javascriptGenerator.forBlock['send_mail'] = function(block, generator
   // TODO: Assemble javascript into code variable.
   var code = `GmailApp.sendEmail(${value_mail_sento}, ${value_mail_title}, ${value_mail_body});<br> `;
   return code;
+};
+
+javascript.javascriptGenerator.forBlock['combine_block'] = function(block, generator) {
+  var value_combine_1 = generator.valueToCode(block, 'combine_1', javascript.Order.ATOMIC);
+  var value_combine_2 = generator.valueToCode(block, 'combine_2', javascript.Order.ATOMIC);
+  var value_combine_3 = generator.valueToCode(block, 'combine_3', javascript.Order.ATOMIC);
+  // TODO: Assemble javascript into code variable.
+  var code = `${value_combine_1}+${value_combine_2}+${value_combine_3}`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
