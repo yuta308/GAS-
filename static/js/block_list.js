@@ -512,6 +512,20 @@ Blockly.defineBlocksWithJsonArray(
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "on_start",
+    "message0": "関数を定義 %1",
+    "args0": [
+      {
+        "type": "input_statement",
+        "name": "onstart",
+        "check": "String"
+      }
+    ],
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]
 );

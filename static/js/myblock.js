@@ -289,3 +289,21 @@ javascript.javascriptGenerator.forBlock['combine_block'] = function(block, gener
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+javascript.javascriptGenerator.forBlock['on_start'] = function (block, generator) {
+  var statements_func = generator.statementToCode(block, 'onstart');
+  this.setNextStatement(true, null);
+  // TODO: Assemble javascript into code variable.
+
+  // 1. Statement input内のコードを取得して、現在のコードに追加する
+  var code = 'function onOpen() {<br>'
+  code += 'var ss = SpreadsheetApp.getActiveSpreadsheet();<br>'
+  code += 'var menuEntries = [];<br>'
+  code += 'menuEntries.push({name: "プログラムを実行", functionName: "mailSend"});<br>'
+  code += 'ss.addMenu("GASファクトリー作成プログラム", menuEntries);}<br>'
+  code += `function gas_factory() {<br>`;
+  code += `${statements_func}`;
+  code += `};\n`;
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = code;
+  return code;
+};
