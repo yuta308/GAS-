@@ -298,7 +298,7 @@ javascript.javascriptGenerator.forBlock['on_start'] = function (block, generator
   var code = 'function onOpen() {<br>'
   code += 'var ss = SpreadsheetApp.getActiveSpreadsheet();<br>'
   code += 'var menuEntries = [];<br>'
-  code += 'menuEntries.push({name: "プログラムを実行", functionName: "mailSend"});<br>'
+  code += 'menuEntries.push({name: "プログラムを実行", functionName: "gas_factory"});<br>'
   code += 'ss.addMenu("GASファクトリー作成プログラム", menuEntries);}<br>'
   code += `function gas_factory() {<br>`;
   code += `${statements_func}`;
