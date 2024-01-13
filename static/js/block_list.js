@@ -5,9 +5,9 @@ Blockly.defineBlocksWithJsonArray(
     "message0": "%1",
     "args0": [
       {
-        "type": "field_input",
+        "type": "field_number",
         "name": "loop_counts",
-        "text": "1"
+        "value": 0
       }
     ],
     "output": "Number",

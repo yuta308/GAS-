@@ -3,6 +3,7 @@
 
 <h1>BlocklyでGASを組み立てよう</h1>
 <div class="row">
+
     <div class="col-md-10">
 
         <!-- Blocklyを最新にしてくれるやつ -->
@@ -17,7 +18,8 @@
         <script src="/static/js/myblock.js"></script>
         <!-- ワークスペースのエリア -->
         <div id="blocklyDiv" style="height: 800px; width: 1000px;"></div>
-        <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark" onclick="doCode()">プログラムを生成</button>
+        <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark"
+            onclick="doCode()">プログラムを生成</button>
         <!-- ツールボックスの定義 -->
         <xml id="toolbox">
             <category name="スプレッドシート操作" color="210">
@@ -68,10 +70,11 @@
                 <block type="send_mail"></block>
             </category>
             <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
-                <block type="function_name" id="]T~;QgTI9wZjNN0C)Cko" deletable="false" movable="false" editable="false" x="-213" y="-137">
-                  <field name="func_name">default</field>
+                <block type="function_name" id="]T~;QgTI9wZjNN0C)Cko" deletable="false" movable="false" editable="false"
+                    x="-213" y="-137">
+                    <field name="func_name">default</field>
                 </block>
-              </xml>
+            </xml>
             <script>
                 var options = {
                     toolbox: toolbox,
@@ -127,6 +130,29 @@
         <p>サンプルプログラムです</p>
         <img src="/static/pic/sample.jpg" alt="プログラムの写真です">
     </div>
+    <p>
+
+
+    </p>
+    <div class="col-md-6">
+        <h5>GASファクトリー説明動画①</h5>
+        <p>この動画ではアプリケーション内の操作からプログラム作成までを説明しています</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Uuz5Vovgs8U?si=Wez1qtkAjBNLhl3r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-6">
+        <h5>GASファクトリー説明動画②</h5>
+        <p>この動画ではスプレッドシートからプログラムを実行するまでの手順を説明しています</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SZ_-3utBCsg?si=w0NhGf_XVWYwche0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <footer>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Copyright:
+            <a class="text-body" href="https://www.mogura-lab.com/">GASファクトリー</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
 </div>
 
 
