@@ -17,4 +17,14 @@ def index():
         return render_template("index.html")
 
 
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    # "/"にGETメソッドで渡された場合の処理
+    if request.method == "GET":
+        # Postクラスからの全データをリスト形式で取得するORM
+        # 取得したpostsという全データをindex.htmlに渡す
+        return render_template("test.html")
+
+
+
 
