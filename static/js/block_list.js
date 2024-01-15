@@ -393,7 +393,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "last_low_variable",
-    "message0": "最終行の列番号",
+    "message0": "最終行の行番号",
     "output": "Number",
     "colour": 120,
     "tooltip": "",
