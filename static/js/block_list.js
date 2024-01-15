@@ -401,7 +401,7 @@ Blockly.defineBlocksWithJsonArray(
   },
   {
     "type": "getrange_int",
-    "message0": "行 %1 %2 列 %3 %4",
+    "message0": "列 %1 %2 行 %3 %4",
     "args0": [
       {
         "type": "input_dummy"
