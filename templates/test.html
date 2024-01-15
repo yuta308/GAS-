@@ -2,155 +2,138 @@
 {% block content %}
 
 <h1>BlocklyでGASを組み立てよう</h1>
+<h6>アプリケーションの使い方がわからない方は<a href="https://www.youtube.com/watch?v=Uuz5Vovgs8U" target="_blank"
+        rel="noopener noreferrer">こちら</a></h6>
+
 <div class="row">
 
-    <div class="col-md-10">
-
-        <!-- Blocklyを最新にしてくれるやつ -->
-        <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-        <!-- Blocklyのライブラリ -->
-        <script src="/static/js/blockly_compressed.js"></script>
-        <script src="/static/js/blocks_compressed.js"></script>
-        <script src="/static/js/block_list.js"></script>
-        <script src="/static/js/javascript_compressed.js"></script>
-        <script src="/static/js/ja.js"></script>
-        <!-- 自作ブロックの定義 -->
-        <script src="/static/js/myblock.js"></script>
-        <!-- ワークスペースのエリア -->
-        <div id="blocklyDiv" style="height: 800px; width: 1000px;"></div>
-        <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark"
-            onclick="doCode()">プログラムを生成</button>
-        <!-- ツールボックスの定義 -->
-        <xml id="toolbox">
-            <category name="スプレッドシート操作" color="210">
-                <block type="on_start"></block>
-                <!-- <block type="function_name"></block> -->
-                <block type="get_info"></block>
-                <!-- <block type="getrange"></block>
+    <!-- Blocklyを最新にしてくれるやつ -->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <!-- Blocklyのライブラリ -->
+    <script src="/static/js/blockly_compressed.js"></script>
+    <script src="/static/js/blocks_compressed.js"></script>
+    <script src="/static/js/block_list.js"></script>
+    <script src="/static/js/javascript_compressed.js"></script>
+    <script src="/static/js/ja.js"></script>
+    <!-- 自作ブロックの定義 -->
+    <script src="/static/js/myblock.js"></script>
+    <!-- ワークスペースのエリア -->
+    <div id="blocklyDiv" style="height: 800px; width: 1400px;"></div>
+    <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark"
+        onclick="doCode()">プログラムを生成</button>
+    <!-- ツールボックスの定義 -->
+    <xml id="toolbox">
+        <category name="スプレッドシート操作" color="210">
+            <block type="on_start"></block>
+            <!-- <block type="function_name"></block> -->
+            <block type="get_info"></block>
+            <!-- <block type="getrange"></block>
                 <block type="setValue"></block>
                 <block type="program_run"></block> -->
-                <!-- <block type="logic_sample"></block> -->
-                <block type="logic_sample2"></block>
-                <block type="get_last_low"></block>
-                <block type="get_value"></block>
-            </category>
-            <category name="数値" color="#6B7CD3">
-                <block type="getrange_int"></block>
-                <block type="loop_counts"></block>
-                <block type="last_low_variable"></block>
-            </category>
-            <category name="論理" color="#6B7CD3">
-                <block type="controls_if"></block>
-                <block type="logic_compare"></block>
-                <block type="calculate"></block>
-            </category>
-            <category name="繰り返し" color="#6B7CD3">
-                <block type="controls_repeat_ext"></block>
-            </category>
-            <category name="時間データ" color="#6B7CD3">
-                <block type="get_date"></block>
-                <block type="hours"></block>
-                <block type="min"></block>
-                <block type="day"></block>
-                <block type="month"></block>
-                <block type="week"></block>
-            </category>
-            <category name="変数">
-                <block type="block_input"></block>
-                <block type="string_variable"></block>
-                <block type="hour_variable"></block>
-                <block type="min_variable"></block>
-                <block type="day_variable"></block>
-                <block type="month_variable"></block>
-                <block type="week_variable"></block>
-                <block type="get_value_data"></block>
-                <block type="combine_block"></block>
-            </category>
-            <category name="メール" color="#6B7CD3">
-                <block type="send_mail"></block>
-            </category>
-            <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
-                <block type="function_name" id="]T~;QgTI9wZjNN0C)Cko" deletable="false" movable="false" editable="false"
-                    x="-213" y="-137">
-                    <field name="func_name">default</field>
-                </block>
-            </xml>
-            <script>
-                var options = {
-                    toolbox: toolbox,
-                    collapse: true,
-                    comments: true,
-                    disable: true,
-                    maxBlocks: Infinity,
-                    trashcan: true,
-                    horizontalLayout: false,
-                    toolboxPosition: 'start',
-                    css: true,
-                    media: 'https://blockly-demo.appspot.com/static/media/',
-                    rtl: false,
-                    scrollbars: true,
-                    sounds: true,
-                    oneBasedIndex: true,
-                    grid: {
-                        spacing: 20,
-                        length: 1,
-                        colour: '#888',
-                        snap: false
-                    }
-                };
-                //Blocklyをdivにはめ込み
-                var workspace = Blockly.inject('blocklyDiv',
-                    { toolbox: document.getElementById('toolbox') }, options);
-
-                function doCode() {
-                    //ブロックからプログラム（文字列）を作成
-                    var code = Blockly.JavaScript.workspaceToCode(workspace);
-                    //プログラムを実行
-                    try {
-                        eval(code);
-
-                    }
-                    catch (e) {
-                        alert(e);
-                    }
+            <!-- <block type="logic_sample"></block> -->
+            <block type="logic_sample2"></block>
+            <block type="get_last_low"></block>
+            <block type="get_value"></block>
+        </category>
+        <category name="数値" color="#6B7CD3">
+            <block type="getrange_int"></block>
+            <block type="loop_counts"></block>
+            <block type="last_low_variable"></block>
+        </category>
+        <category name="論理" color="#6B7CD3">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="calculate"></block>
+        </category>
+        <category name="繰り返し" color="#6B7CD3">
+            <block type="controls_repeat_ext"></block>
+        </category>
+        <category name="時間データ" color="#6B7CD3">
+            <block type="get_date"></block>
+            <block type="hours"></block>
+            <block type="min"></block>
+            <block type="day"></block>
+            <block type="month"></block>
+            <block type="week"></block>
+        </category>
+        <category name="変数">
+            <block type="block_input"></block>
+            <block type="string_variable"></block>
+            <block type="hour_variable"></block>
+            <block type="min_variable"></block>
+            <block type="day_variable"></block>
+            <block type="month_variable"></block>
+            <block type="week_variable"></block>
+            <block type="get_value_data"></block>
+            <block type="combine_block"></block>
+        </category>
+        <category name="メール" color="#6B7CD3">
+            <block type="send_mail"></block>
+        </category>
+        <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
+            <block type="function_name" id="]T~;QgTI9wZjNN0CCko" deletable="false" movable="false" editable="false"
+                x="-213" y="-137">
+                <field name="func_name">default</field>
+            </block>
+        </xml>
+        <script>
+            var options = {
+                toolbox: toolbox,
+                collapse: true,
+                comments: true,
+                disable: true,
+                maxBlocks: Infinity,
+                trashcan: true,
+                horizontalLayout: false,
+                toolboxPosition: 'start',
+                css: true,
+                media: 'https://blockly-demo.appspot.com/static/media/',
+                rtl: false,
+                scrollbars: true,
+                sounds: true,
+                oneBasedIndex: true,
+                grid: {
+                    spacing: 20,
+                    length: 1,
+                    colour: '#888',
+                    snap: false
                 }
-            </script>
+            };
+            //Blocklyをdivにはめ込み
+            var workspace = Blockly.inject('blocklyDiv',
+                { toolbox: document.getElementById('toolbox') }, options);
 
-            <div class="card w-75">
-                <div class="card-body">
-                    <h5 class="card-title">GoogleAppScripts</h5>
-                    <p class="card-text">
-                    <div id="output"></div>
-                    <script src="/static/js/myblock.js"></script>
-                    </p>
-                </div>
+            function doCode() {
+                //ブロックからプログラム（文字列）を作成
+                var code = Blockly.JavaScript.workspaceToCode(workspace);
+                //プログラムを実行
+                try {
+                    eval(code);
+
+                }
+                catch (e) {
+                    alert(e);
+                }
+            }
+        </script>
+
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">GoogleAppScripts</h5>
+                <p class="card-text">
+                <div id="output"></div>
+                <script src="/static/js/myblock.js"></script>
+                </p>
             </div>
-    </div>
-    <div class="col-md-2">
-        <p>サンプルプログラムです</p>
-        <img src="/static/pic/sample.jpg" alt="プログラムの写真です">
-
-        <h5>説明動画①</h5>
-        <p>プログラム作成までを説明しています</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Uuz5Vovgs8U?si=Wez1qtkAjBNLhl3r"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <div class="col-md-6">
-        <h5>説明動画②</h5>
+        </div>
+        <h4>プログラム解説</h4>
+        <img src="/static/pic/sample_2.jpg" class="img-fluid" alt="プログラム解説画像" />
+        <h5>GoogleAppsScriptに反映させる手順</h5>
         <p>実行するまでの手順を説明しています</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SZ_-3utBCsg?si=w0NhGf_XVWYwche0"
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vlYuh-pQhLs?si=Ddjr3r5YTeAW_9O_"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
-    </div>
-    <div class="col-md-6">
-        <h5>プログラム解説</h5>
-        <img src="/static/pic/sample_2.jpg" class="img-fluid" alt="プログラム解説画像" />
-    </div>
 </div>
 
 
