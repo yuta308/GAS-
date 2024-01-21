@@ -5,7 +5,7 @@ javascript.javascriptGenerator.forBlock['function_name'] = function (block, gene
   // TODO: Assemble javascript into code variable.
 
   // 1. Statement input内のコードを取得して、現在のコードに追加する
-  var code = `function ${text_func_name}() {<br>`;
+  var code = `function ${text_func_name}() {\n`;
   code += `${statements_func}`;
   code += `};\n`;
   const outputElement = document.getElementById("output");
@@ -17,7 +17,7 @@ javascript.javascriptGenerator.forBlock['function_name'] = function (block, gene
 javascript.javascriptGenerator.forBlock['get_info'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();<br>';
+  var code = '    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -26,7 +26,7 @@ javascript.javascriptGenerator.forBlock['get_info'] = function (block, generator
 javascript.javascriptGenerator.forBlock['program_run'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    sheet<br>';
+  var code = '    sheet\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -35,9 +35,9 @@ javascript.javascriptGenerator.forBlock['program_run'] = function (block, genera
 javascript.javascriptGenerator.forBlock['getrange'] = function (block, generator) {
   var text_getrange = block.getFieldValue('getRange');
   // TODO: Assemble javascript into code variable.
-  var code = `sheet = sheet.getRange("${text_getrange}");<br>`;
+  var code = `sheet = sheet.getRange("${text_getrange}");\n`;
 
-  // 改行文字を<br>に変換
+  // 改行文字を\nに変換
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
 
@@ -47,7 +47,7 @@ javascript.javascriptGenerator.forBlock['getrange'] = function (block, generator
 javascript.javascriptGenerator.forBlock['setValue'] = function (block, generator) {
   var text_setValue = block.getFieldValue('setValue');
   // TODO: Assemble javascript into code variable.
-  var code = `sheet = sheet.setValue('${text_setValue}');<br>`;
+  var code = `sheet = sheet.setValue('${text_setValue}');\n`;
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
 
@@ -71,7 +71,7 @@ javascript.javascriptGenerator.forBlock['logic_compare'] = function (block, gene
   var dropdown_equl = block.getFieldValue('OP');
   var value_eqol_ato = generator.valueToCode(block, 'B', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `${value_eqol_mae}${dropdown_equl}${value_eqol_ato}<br>`;
+  var code = `${value_eqol_mae}${dropdown_equl}${value_eqol_ato}\n`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -107,8 +107,8 @@ javascript.javascriptGenerator.forBlock['controls_repeat_ext'] = function (block
   // TODO: Assemble javascript into code variable.
 
   // 1. Statement input内のコードを取得して、現在のコードに追加する
-  var code = `for( var i = 1 ; i <= ${Num_TIMES}; i++ ) {<br>`;
-  code += `${input_statement}<br>`;
+  var code = `for( var i = 1 ; i <= ${Num_TIMES}; i++ ) {\n`;
+  code += `${input_statement}\n`;
   code += `};\n`;
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
@@ -118,7 +118,7 @@ javascript.javascriptGenerator.forBlock['controls_repeat_ext'] = function (block
 javascript.javascriptGenerator.forBlock['get_date'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var date  =  new Date();<br>';
+  var code = '    var date  =  new Date();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -127,7 +127,7 @@ javascript.javascriptGenerator.forBlock['get_date'] = function (block, generator
 javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var hours = date.getHours();<br>';
+  var code = '    var hours = date.getHours();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -136,7 +136,7 @@ javascript.javascriptGenerator.forBlock['hours'] = function (block, generator) {
 javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var min = date.getMinutes();<br>';
+  var code = '    var min = date.getMinutes();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -144,7 +144,7 @@ javascript.javascriptGenerator.forBlock['min'] = function (block, generator) {
 javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var day = date.getDate();<br>';
+  var code = '    var day = date.getDate();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -152,7 +152,7 @@ javascript.javascriptGenerator.forBlock['day'] = function (block, generator) {
 javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var month = date.getMonth() + 1;<br>';
+  var code = '    var month = date.getMonth() + 1;\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -161,7 +161,7 @@ javascript.javascriptGenerator.forBlock['month'] = function (block, generator) {
 javascript.javascriptGenerator.forBlock['get_last_low'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = '    var lastRow = sheet.getLastRow();<br>';
+  var code = '    var lastRow = sheet.getLastRow();\n';
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -169,9 +169,9 @@ javascript.javascriptGenerator.forBlock['get_last_low'] = function (block, gener
 javascript.javascriptGenerator.forBlock['week'] = function (block, generator) {
   this.setNextStatement(true, null);
   // TODO: Assemble javascript into code variable.
-  var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];<br>";
-  code += "    var week_num =date.getDay();<br>";
-  code += "    var week = daysOfWeek[week_num];<br>";
+  var code = "      var daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];\n";
+  code += "    var week_num =date.getDay();\n";
+  code += "    var week = daysOfWeek[week_num];\n";
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
@@ -181,7 +181,7 @@ javascript.javascriptGenerator.forBlock['block_input'] = function (block, genera
   var cell_numm = generator.valueToCode(block, 'cell_num', javascript.Order.ATOMIC);
   var cell_contents = generator.valueToCode(block, 'cell_contents', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `sheet.getRange(${cell_numm}).setValue(${cell_contents});<br>`;
+  var code = `sheet.getRange(${cell_numm}).setValue(${cell_contents});\n`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code;
 };
@@ -259,7 +259,7 @@ javascript.javascriptGenerator.forBlock['getrange_int'] = function (block, gener
 javascript.javascriptGenerator.forBlock['get_value'] = function (block, generator) {
   var get_value = generator.valueToCode(block, 'get_value', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `var get_value = sheet.getRange(${get_value}).getValue();<br>`;
+  var code = `var get_value = sheet.getRange(${get_value}).getValue();\n`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code
 };
@@ -276,7 +276,7 @@ javascript.javascriptGenerator.forBlock['send_mail'] = function(block, generator
   var value_mail_title = generator.valueToCode(block, 'mail_title', javascript.Order.ATOMIC);
   var value_mail_body = generator.valueToCode(block, 'mail_body', javascript.Order.ATOMIC);
   // TODO: Assemble javascript into code variable.
-  var code = `GmailApp.sendEmail(${value_mail_sento}, ${value_mail_title}, ${value_mail_body});<br> `;
+  var code = `GmailApp.sendEmail(${value_mail_sento}, ${value_mail_title}, ${value_mail_body});\n `;
   return code;
 };
 
@@ -295,14 +295,13 @@ javascript.javascriptGenerator.forBlock['on_start'] = function (block, generator
   // TODO: Assemble javascript into code variable.
 
   // 1. Statement input内のコードを取得して、現在のコードに追加する
-  var code = 'function onOpen() {<br>'
-  code += 'var ss = SpreadsheetApp.getActiveSpreadsheet();<br>'
-  code += 'var menuEntries = [];<br>'
-  code += 'menuEntries.push({name: "プログラムを実行", functionName: "gas_factory"});<br>'
-  code += 'ss.addMenu("GASファクトリー作成プログラム", menuEntries);}<br>'
-  code += `function gas_factory() {<br>`;
-  code += `${statements_func}`;
-  code += `};\n`;
+  let code = `
+  function onOpen() {var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var menuEntries = [];menuEntries.push({name: "プログラムを実行", functionName: "gas_factory"});
+    ss.addMenu("GASファクトリー作成プログラム", menuEntries);}
+    function gas_factory() {
+      ${statements_func}};
+      `;
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = code;
   return code;
